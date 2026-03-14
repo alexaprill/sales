@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ client_name }} - Global Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --navy-light: #1e3a5f;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.45;
+            color: var(--text);
+            background: white;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        /* ===== HEADER ===== */
+        .header-bar {
+            background: var(--navy);
+            padding: 12px 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-logo { height: 22px; width: auto; }
+
+        /* ===== CONTENT ===== */
+        .content { padding: 20px 28px 16px 28px; }
+
+        /* ===== GREETING ===== */
+        .greeting { margin-bottom: 14px; }
+
+        .greeting-name {
+            font-size: 16pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .greeting-text {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* ===== ACCENT LINE ===== */
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin: 12px 0;
+        }
+
+        /* ===== SECTION LABELS ===== */
+        .section-label {
+            font-size: 7.5pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        /* ===== STRENGTHS & GROWTH ===== */
+        .two-cols {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .col { flex: 1; }
+
+        .col-label {
+            font-size: 8pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            padding-bottom: 3px;
+        }
+
+        .col-label-strengths {
+            color: var(--cyan);
+            border-bottom: 2px solid var(--cyan);
+        }
+
+        .col-label-growth {
+            color: var(--blue);
+            border-bottom: 2px solid var(--blue);
+        }
+
+        .card {
+            padding: 6px 10px;
+            margin-bottom: 4px;
+            border-radius: 4px;
+            background: var(--bg-light);
+        }
+
+        .card-strength { border-left: 3px solid var(--cyan); }
+        .card-growth { border-left: 3px solid var(--blue); }
+
+        .card-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1px;
+        }
+
+        .card-text {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* ===== WORK PLAN ===== */
+        .phase {
+            display: flex;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .phase-number {
+            background: var(--navy);
+            color: white;
+            font-size: 10pt;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            min-width: 30px;
+        }
+
+        .phase-body {
+            flex: 1;
+            padding: 6px 12px;
+            background: var(--bg-light);
+        }
+
+        .phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 2px;
+        }
+
+        .phase-name {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .phase-timeline {
+            font-size: 7pt;
+            font-weight: 600;
+            color: var(--navy);
+            background: white;
+            padding: 1px 0;
+            border-radius: 10px;
+            border: 1px solid var(--navy);
+            width: 65px;
+            text-align: center;
+            display: inline-block;
+        }
+
+        .phase-tasks {
+            list-style: none;
+            padding: 0;
+            margin: 2px 0 0 0;
+        }
+
+        .phase-tasks li {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            padding: 1px 0 1px 10px;
+            position: relative;
+        }
+
+        .phase-tasks li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--navy);
+        }
+
+        .phase-result {
+            font-size: 7.5pt;
+            font-weight: 600;
+            color: var(--navy);
+            margin-top: 2px;
+        }
+
+        /* ===== URGENCY (page 1) ===== */
+        .urgency-box {
+            background: var(--bg-light);
+            border-left: 3px solid var(--cyan);
+            padding: 10px 14px;
+            border-radius: 0 4px 4px 0;
+            margin-top: 10px;
+        }
+
+        .urgency-title {
+            font-weight: 700;
+            font-size: 8.5pt;
+            color: var(--cyan);
+            margin-bottom: 3px;
+        }
+
+        .urgency-text {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ===== MENTOR (page 2, 50/50) ===== */
+        .mentor-section {
+            display: flex;
+            gap: 0;
+            align-items: stretch;
+            margin-bottom: 14px;
+            border-radius: 6px;
+            overflow: hidden;
+            background: var(--bg-light);
+            min-height: 110px;
+        }
+
+        .mentor-info {
+            flex: 1;
+            padding: 14px 14px 14px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mentor-label {
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .mentor-name {
+            font-size: 12pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .mentor-university {
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .mentor-bio {
+            font-size: 7.5pt;
+            font-weight: 400;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .mentor-photo-wrap {
+            flex: 0 0 24%;
+        }
+
+        .mentor-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .mentor-why-label {
+            font-size: 8.5pt;
+            font-weight: 600;
+            color: var(--navy);
+            margin-top: 6px;
+            margin-bottom: 2px;
+        }
+
+        .mentor-why-text {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== PAGE 2: RECOMMENDATION ===== */
+        .recommendation-box {
+            background: var(--bg-light);
+            border-left: 3px solid var(--navy);
+            border-radius: 0 6px 6px 0;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+        }
+
+        .rec-label {
+            font-size: 7pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .rec-name {
+            font-size: 12pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .rec-reason {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ===== PRICING TABLE ===== */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 10px 0;
+            font-size: 7.5pt;
+        }
+
+        .pricing-table th {
+            background: var(--navy);
+            color: white;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table tr.recommended {
+            background: var(--bg-light);
+        }
+
+        .pricing-table tr.recommended td {
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--cyan);
+            color: white;
+            font-size: 6pt;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 2px;
+            margin-left: 4px;
+            vertical-align: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== TEAM ===== */
+        .team-line {
+            font-size: 7.5pt;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 5px 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            margin: 8px 0;
+        }
+
+        /* ===== SPECIAL OFFER ===== */
+        .special-offer {
+            background: var(--navy);
+            color: white;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+        }
+
+        .special-offer-title {
+            font-size: 9pt;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .special-offer-text {
+            font-size: 8pt;
+            font-weight: 400;
+            line-height: 1.55;
+            opacity: 0.9;
+        }
+
+        .special-offer-deadline {
+            font-size: 7.5pt;
+            font-weight: 600;
+            margin-top: 5px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        /* ===== FACTS ===== */
+        .facts-row {
+            display: flex;
+            margin: 10px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .fact-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 4px;
+            border-right: 1px solid var(--border);
+        }
+        .fact-item:last-child { border-right: none; }
+
+        .fact-number {
+            font-size: 13pt;
+            font-weight: 800;
+            color: var(--navy);
+            display: block;
+        }
+
+        .fact-label {
+            font-size: 6pt;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 12px 20px;
+            background: var(--bg-light);
+            border-radius: 6px;
+        }
+
+        .cta-title {
+            font-size: 11pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .cta-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+        }
+
+        .cta-contacts {
+            font-size: 7.5pt;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .cta-date {
+            font-size: 7pt;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 6.5pt;
+            color: var(--text-muted);
+        }
+
+        .page-footer-line {
+            position: absolute;
+            top: 0;
+            left: 28px;
+            right: 28px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.015;
+            background-image: url('../assets/gg-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="greeting">
+            <div class="greeting-name">{{ client_name }},</div>
+            <div class="greeting-text">{{ greeting_text }}</div>
+        </div>
+
+        <div class="accent-line"></div>
+
+        <!-- Strengths & Growth -->
+        <div class="two-cols">
+            <div class="col">
+                <div class="col-label col-label-strengths">Сильные стороны</div>
+                {% for item in strengths %}
+                <div class="card card-strength">
+                    <div class="card-title">{{ item.title }}</div>
+                    <div class="card-text">{{ item.text }}</div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="col">
+                <div class="col-label col-label-growth">Зоны роста</div>
+                {% for item in growth_areas %}
+                <div class="card card-growth">
+                    <div class="card-title">{{ item.title }}</div>
+                    <div class="card-text">{{ item.text }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Work Plan -->
+        <div class="section-label">Ваш план</div>
+        {% for phase in work_plan %}
+        <div class="phase">
+            <div class="phase-number">{{ loop.index }}</div>
+            <div class="phase-body">
+                <div class="phase-header">
+                    <div class="phase-name">{{ phase.name }}</div>
+                    <div class="phase-timeline">{{ phase.timeline }}</div>
+                </div>
+                <ul class="phase-tasks">
+                    {% for task in phase.tasks %}
+                    <li>{{ task }}</li>
+                    {% endfor %}
+                </ul>
+                <div class="phase-result">{{ phase.result }}</div>
+            </div>
+        </div>
+        {% endfor %}
+
+        <!-- Urgency (moved to page 1) -->
+        <div class="urgency-box">
+            <div class="urgency-title">Почему важно начать сейчас</div>
+            <div class="urgency-text">{{ urgency_text }}</div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>1 / 2</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <!-- Mentor (50/50 with photo) -->
+        {% if mentor %}
+        <div class="section-label">Ваш ментор</div>
+        <div class="mentor-section">
+            <div class="mentor-info">
+                <div class="mentor-name">{{ mentor.name }}</div>
+                <div class="mentor-university">{{ mentor.university }}</div>
+                <div class="mentor-bio">{{ mentor.bio }}</div>
+                {% if mentor.why %}
+                <div class="mentor-why-label">Почему именно она?</div>
+                <div class="mentor-why-text">{{ mentor.why }}</div>
+                {% endif %}
+            </div>
+            {% if mentor.photo %}
+            <div class="mentor-photo-wrap">
+                <img src="{{ mentor.photo }}" class="mentor-photo" alt="{{ mentor.name }}">
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- Recommended Format -->
+        <div class="section-label">Рекомендованный формат</div>
+        <div class="recommendation-box">
+            <div class="rec-label">Оптимальный вариант для вас</div>
+            <div class="rec-name">{{ recommendation.name }}</div>
+            <div class="rec-reason">{{ recommendation.reason }}</div>
+        </div>
+
+        <!-- All Formats -->
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Формат</th>
+                    <th>Стоимость</th>
+                    <th>Что включено</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for fmt in formats %}
+                <tr {% if fmt.recommended %}class="recommended"{% endif %}>
+                    <td>{{ fmt.name }}{% if fmt.recommended %}<span class="badge">Рекомендуем</span>{% endif %}</td>
+                    <td>{{ fmt.price }}</td>
+                    <td>{{ fmt.includes }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="team-line">Ваша команда: ментор + care-менеджер + личный менеджер + основатель Лев</div>
+
+        <!-- Special Offer -->
+        <div class="special-offer">
+            <div class="special-offer-title">{{ special_offer.title }}</div>
+            <div class="special-offer-text">{{ special_offer.text }}</div>
+            <div class="special-offer-deadline">{{ special_offer.deadline }}</div>
+        </div>
+
+        <!-- Facts -->
+        <div class="facts-row">
+            <div class="fact-item">
+                <span class="fact-number">$30M+</span>
+                <span class="fact-label">финансирования</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">98%</span>
+                <span class="fact-label">поступают</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">1000+</span>
+                <span class="fact-label">кейсов</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">$300K</span>
+                <span class="fact-label">средний грант</span>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <div class="cta-title">{{ cta.title }}</div>
+            <div class="cta-text">{{ cta.text }}</div>
+            <div class="cta-contacts">{{ cta.contacts }}</div>
+            <div class="cta-date">{{ date }}</div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>2 / 2</span>
+    </div>
+</div>
+
+</body>
+</html>
