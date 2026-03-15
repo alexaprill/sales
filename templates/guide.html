@@ -406,6 +406,49 @@
             color: var(--text-secondary);
             line-height: 1.5;
         }
+
+        /* ===== TEAM PHOTO ROW ===== */
+        .team-row {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            margin: 14px 0;
+        }
+
+        .team-member {
+            text-align: center;
+        }
+
+        .team-photo {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
+
+        .team-name {
+            font-size: 6.5pt;
+            font-weight: 600;
+            color: var(--navy);
+            margin-top: 3px;
+            display: block;
+        }
+
+        .team-uni {
+            font-size: 5.5pt;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .team-photo-large {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+        }
     </style>
 </head>
 <body>
@@ -445,6 +488,40 @@
             <div class="fact-item">
                 <span class="fact-number">$300K</span>
                 <span class="fact-label">средний грант</span>
+            </div>
+        </div>
+
+        <!-- Наша команда -->
+        <div class="team-row">
+            <div class="team-member">
+                <img src="../assets/grad_yara.jpg" class="team-photo" alt="Яра">
+                <span class="team-name">Яра</span>
+                <span class="team-uni">Yale</span>
+            </div>
+            <div class="team-member">
+                <img src="../assets/grad_sasha.jpg" class="team-photo" alt="Саша">
+                <span class="team-name">Саша</span>
+                <span class="team-uni">Harvard</span>
+            </div>
+            <div class="team-member">
+                <img src="../assets/grad_alena.jpg" class="team-photo" alt="Алёна">
+                <span class="team-name">Алёна</span>
+                <span class="team-uni">Bates College</span>
+            </div>
+            <div class="team-member">
+                <img src="../assets/grad_renata.png" class="team-photo" alt="Рената">
+                <span class="team-name">Рената</span>
+                <span class="team-uni">Duke</span>
+            </div>
+            <div class="team-member">
+                <img src="../assets/grad_lev.jpg" class="team-photo" alt="Лев">
+                <span class="team-name">Лев</span>
+                <span class="team-uni">Duke</span>
+            </div>
+            <div class="team-member">
+                <img src="../assets/grad_alisa.jpg" class="team-photo" alt="Алиса">
+                <span class="team-name">Алиса</span>
+                <span class="team-uni">Bennington</span>
             </div>
         </div>
 
@@ -678,59 +755,39 @@
     </div>
 
     <div class="content">
-        <!-- Форматы работы -->
-        <div class="section-label">Форматы работы с GG</div>
-
-        <div class="step">
-            <div class="step-number" style="background: var(--cyan);">&#10003;</div>
-            <div class="step-body">
-                <div class="step-title">Курс "Самостоятельное поступление" - 29 999 &#8381; разово</div>
-                <div class="step-text">Пошаговый портал с видеоуроками, шаблонами и чек-листами + чат поддержки. Для тех, кто готов работать сам.</div>
-            </div>
-        </div>
-
-        <div class="step">
-            <div class="step-number" style="background: var(--cyan);">&#10003;</div>
-            <div class="step-body">
-                <div class="step-title">Частичное менторство - 55 000 &#8381;/мес</div>
-                <div class="step-text">Персональный ментор на связи в чате + стратегический созвон. Для тех, кому нужна помощь точечно.</div>
-            </div>
-        </div>
-
-        <div class="step">
-            <div class="step-number" style="background: var(--blue);">&#9733;</div>
-            <div class="step-body">
-                <div class="step-title">Полное менторство - 80 000 &#8381;/мес</div>
-                <div class="step-text">4 встречи/мес, домашние задания, полное сопровождение, гарантия поступления (от 6 мес.). Основной формат.</div>
-            </div>
-        </div>
-
-        <div class="step">
-            <div class="step-number" style="background: var(--navy);">+</div>
-            <div class="step-body">
-                <div class="step-title">Премиум менторство - по запросу</div>
-                <div class="step-text">6 встреч/мес, 2 ментора, полностью индивидуальная программа для сложных кейсов.</div>
-            </div>
-        </div>
-
-        <div class="info-box">
-            <div class="info-box-title">Помесячная оплата - без долгосрочных контрактов</div>
-            <div class="info-box-text">
-                Ты не подписываешь контракт на полгода. Можно начать с одного месяца, посмотреть на результат и решить, продолжать ли. Большинство наших клиентов остаются, потому что видят прогресс.
-            </div>
-        </div>
-
         <!-- Гарантии -->
         <div class="section-label">Наши гарантии</div>
         <ul class="bullet-list">
             <li><strong>Минимум 1 приглашение (offer)</strong> из согласованного списка вузов</li>
-            <li><strong>Полный возврат средств</strong> при отсутствии приглашений (Полное/Премиум, от 6 мес.)</li>
+            <li><strong>Полный возврат средств</strong> при отсутствии приглашений (от 6 месяцев работы)</li>
             <li><strong>Подача на максимальное финансирование</strong> - мы заинтересованы в твоем результате</li>
         </ul>
 
         <div class="body-text" style="font-size: 8pt;">
-            Договор составлен юристами с опытом работы в РФ и США: <strong>global-generations.com/individualnyj-dogovor</strong>
+            Гарантии фиксируются в договоре, составленном юристами с опытом работы в РФ и США: <strong>global-generations.com/individualnyj-dogovor</strong>
         </div>
+
+        <!-- Помесячная оплата -->
+        <div class="section-label">Помесячная оплата - без долгосрочных контрактов</div>
+        <div class="body-text">
+            Мы принципиально не берем оплату за полгода или год вперед. Помесячная оплата - это наш способ показать, что мы уверены в качестве работы:
+        </div>
+        <ul class="bullet-list">
+            <li><strong>Четкий результат каждый месяц</strong> - ты видишь, что именно было сделано</li>
+            <li><strong>Можно прекратить, взять паузу, вернуться</strong> - без штрафов</li>
+            <li><strong>Можно сменить ментора или поменять подход</strong> - гибкость на каждом этапе</li>
+            <li><strong>Можно взять 1 месяц "на пробу"</strong> - разобраться, подходит ли это тебе</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-box-title">Минимальный срок - 1 месяц</div>
+            <div class="info-box-text">
+                Ты не подписываешь контракт на полгода. Один месяц - и ты уже видишь результат и понимаешь, стоит ли продолжать.
+            </div>
+        </div>
+
+        <!-- Баннер -->
+        <img src="../assets/guide_banner.jpg" style="width: 100%; height: auto; display: block; border-radius: 6px; margin: 12px 0;" alt="Global Generation">
 
         <!-- Промокод -->
         <div class="promo-box">
