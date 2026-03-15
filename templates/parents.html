@@ -310,11 +310,12 @@
         .guarantee-list li.yes::before {
             content: "";
             position: absolute;
-            left: 0;
-            top: 5px;
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--cyan);
+            left: 1px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 9px;
+            height: 9px;
+            border: 1.5px solid var(--cyan);
             border-radius: 50%;
             background: var(--cyan);
         }
@@ -323,22 +324,23 @@
             content: "";
             position: absolute;
             left: 3px;
-            top: 8px;
-            width: 6px;
-            height: 3px;
-            border-left: 2px solid white;
-            border-bottom: 2px solid white;
-            transform: rotate(-45deg);
+            top: 50%;
+            transform: translateY(-60%) rotate(-45deg);
+            width: 5px;
+            height: 2.5px;
+            border-left: 1.5px solid white;
+            border-bottom: 1.5px solid white;
         }
 
         .guarantee-list li.no::before {
             content: "";
             position: absolute;
             left: 2px;
-            top: 7px;
-            width: 8px;
-            height: 8px;
-            border: 2px solid var(--text-muted);
+            top: 50%;
+            transform: translateY(-50%);
+            width: 7px;
+            height: 7px;
+            border: 1.5px solid var(--text-muted);
             border-radius: 50%;
         }
 
@@ -379,7 +381,7 @@
         /* ===== CTA ===== */
         .cta-section {
             text-align: center;
-            padding: 14px 20px;
+            padding: 10px 20px;
             background: var(--bg-light);
             border-radius: 6px;
             margin-top: 10px;
@@ -541,12 +543,22 @@
                 <div class="step-text">Вы всегда видите, на каком этапе находится подготовка, какие задачи выполнены и что впереди.</div>
             </div>
         </div>
+
+        <!-- Роль родителя -->
+        <div class="section-label">Роль родителя в процессе</div>
+        <ul class="bullet-list">
+            <li><strong>Договор заключается на родителя</strong> (если ребенок несовершеннолетний)</li>
+            <li><strong>Можно присутствовать на встречах</strong> и задавать вопросы в чате</li>
+            <li><strong>Помощь с финансовыми документами</strong> - для стипендий часто нужны справки о доходах</li>
+            <li><strong>Моральная поддержка</strong> - процесс поступления долгий и сложный, ваша поддержка важна</li>
+            <li><strong>Доступ к карточке абитуриента</strong> - видите прогресс в любой момент</li>
+        </ul>
     </div>
 
     <div class="page-footer">
         <div class="page-footer-line"></div>
         <span>Global Generation</span>
-        <span>1 / 3</span>
+        <span>1 / 2</span>
     </div>
 </div>
 
@@ -615,7 +627,7 @@
         <!-- Гарантии -->
         <div class="section-label">Гарантии</div>
         <div class="body-text">
-            Мы фиксируем гарантии в договоре, составленном юристами с опытом работы в РФ и США.
+            Мы фиксируем гарантии в договоре, составленном юристами с опытом работы в РФ и США. Ознакомиться с договором можно на сайте: <strong>global-generations.com/individualnyj-dogovor</strong>
         </div>
 
         <div class="two-cols">
@@ -624,9 +636,7 @@
                 <ul class="guarantee-list">
                     <li class="yes">Минимум 1 приглашение (offer) из согласованного списка вузов</li>
                     <li class="yes">При отсутствии приглашений (Полное/Премиум, от 6 мес.) - полный возврат средств</li>
-                    <li class="yes">Подача на максимальное финансирование</li>
-                    <li class="yes">Помощь с переговорами по стипендии</li>
-                    <li class="yes">Консультация по визовому процессу</li>
+                    <li class="yes">Подача на максимально возможное финансирование при необходимости</li>
                 </ul>
             </div>
             <div class="col">
@@ -637,37 +647,12 @@
                 </ul>
                 <div class="info-box" style="margin-top: 8px;">
                     <div class="info-box-text">
-                        Но мы делаем все возможное: подаемся на максимальное финансирование, помогаем с переговорами и консультируем по визе.
+                        Но мы делаем все возможное: подаемся на максимальное финансирование и помогаем выстроить стратегию подачи.
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Роль родителя -->
-        <div class="section-label">Роль родителя в процессе</div>
-        <ul class="bullet-list">
-            <li><strong>Договор заключается на родителя</strong> (если ребенок несовершеннолетний)</li>
-            <li><strong>Можно присутствовать на встречах</strong> и задавать вопросы в чате</li>
-            <li><strong>Помощь с финансовыми документами</strong> - для стипендий часто нужны справки о доходах</li>
-            <li><strong>Моральная поддержка</strong> - процесс поступления долгий и сложный, ваша поддержка важна</li>
-            <li><strong>Доступ к карточке абитуриента</strong> - видите прогресс в любой момент</li>
-        </ul>
-    </div>
-
-    <div class="page-footer">
-        <div class="page-footer-line"></div>
-        <span>Global Generation</span>
-        <span>2 / 3</span>
-    </div>
-</div>
-
-<!-- ==================== PAGE 3 ==================== -->
-<div class="page">
-    <div class="header-bar">
-        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
-    </div>
-
-    <div class="content">
         <!-- Способы оплаты -->
         <div class="section-label">Способы оплаты</div>
         <div class="payment-grid">
@@ -676,17 +661,22 @@
             <div class="payment-item">Криптовалюта</div>
         </div>
         <div class="body-text" style="font-size: 8pt;">
-            Работаем по договору (для граждан РФ) или оферте (для иностранных граждан). Все условия прозрачны и зафиксированы документально.
+            Работаем по договору (для граждан РФ) или оферте (для иностранных граждан). Зарубежные карты принимаем через Wise, PayPal и другие сервисы. В скором времени будет доступна оплата на сайте.
+        </div>
+
+        <!-- Отзывы -->
+        <div class="info-box">
+            <div class="info-box-title">Отзывы наших клиентов</div>
+            <div class="info-box-text">
+                Истории студентов, которые уже поступили с нашей помощью: <strong>global-generations.com/reviews</strong>
+            </div>
         </div>
 
         <!-- CTA -->
         <div class="cta-section">
             <div class="cta-title">Готовы начать?</div>
-            <div class="cta-text">
-                Напишите нам - мы ответим на вопросы, подберем ментора<br>и составим план подготовки для вашего ребенка.
-            </div>
             <div class="cta-contacts">
-                globalgeneration.xyz &nbsp; | &nbsp; Telegram: @global_generation
+                global-generations.com &nbsp; | &nbsp; Telegram: @alexandraGlobal
             </div>
         </div>
     </div>
@@ -694,7 +684,7 @@
     <div class="page-footer">
         <div class="page-footer-line"></div>
         <span>Global Generation</span>
-        <span>3 / 3</span>
+        <span>2 / 2</span>
     </div>
 </div>
 
