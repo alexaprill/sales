@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ client_name }} - Дорожная карта и смета - Global Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4; margin: 0; }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+            --bg-highlight: #e8f4f8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.45;
+            color: var(--text);
+            background: white;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        .header-bar {
+            background: var(--navy);
+            padding: 12px 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-logo { height: 22px; width: auto; }
+
+        .content { padding: 18px 28px 60px 28px; }
+
+        /* ===== TITLE ===== */
+        .doc-title {
+            font-size: 16pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+
+        .doc-subtitle {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+        }
+
+        .doc-client {
+            font-size: 8pt;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin: 8px 0 14px 0;
+        }
+
+        .intro-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 14px;
+        }
+
+        /* ===== SECTION LABELS ===== */
+        .section-label {
+            font-size: 8pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+
+        .section-label:first-of-type { margin-top: 0; }
+
+        /* ===== TIMELINE TABLE ===== */
+        .timeline-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7.5pt;
+            margin-bottom: 8px;
+        }
+
+        .timeline-table th {
+            background: var(--navy);
+            color: white;
+            padding: 6px 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .timeline-table td {
+            padding: 7px 8px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        .timeline-table tr:nth-child(even) td { background: var(--bg-light); }
+
+        .timeline-period {
+            font-weight: 700;
+            color: var(--navy);
+            white-space: nowrap;
+            border-left: 3px solid var(--cyan);
+            padding-left: 8px !important;
+        }
+
+        .timeline-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .timeline-list li {
+            padding: 1px 0 1px 9px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .timeline-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--navy);
+        }
+
+        .timeline-owner {
+            font-size: 7pt;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        /* ===== COST TABLES ===== */
+        .cost-block {
+            margin-bottom: 10px;
+        }
+
+        .cost-block-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+            padding-left: 8px;
+            border-left: 3px solid var(--blue);
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7.5pt;
+        }
+
+        .cost-table th {
+            background: var(--bg-light);
+            color: var(--navy);
+            padding: 5px 8px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 6.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1.5px solid var(--navy);
+        }
+
+        .cost-table th.num { text-align: right; }
+
+        .cost-table td {
+            padding: 5px 8px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .cost-table td.num {
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+        }
+
+        .cost-table td.note {
+            font-size: 6.8pt;
+            color: var(--text-muted);
+        }
+
+        .cost-table tr.highlight td {
+            background: var(--bg-highlight);
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .cost-table tr.subtotal td {
+            font-weight: 700;
+            color: var(--navy);
+            border-top: 1px solid var(--navy);
+            border-bottom: none;
+            background: white;
+        }
+
+        /* ===== TOTALS ===== */
+        .totals-box {
+            background: var(--navy);
+            color: white;
+            padding: 10px 14px;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-around;
+            gap: 10px;
+        }
+
+        .totals-item { flex: 1; text-align: center; }
+
+        .totals-label {
+            font-size: 6.5pt;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 3px;
+        }
+
+        .totals-value {
+            font-size: 10pt;
+            font-weight: 800;
+            color: white;
+        }
+
+        /* ===== RISKS ===== */
+        .risks-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 7.5pt;
+        }
+
+        .risks-table th {
+            background: var(--navy);
+            color: white;
+            padding: 6px 8px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .risks-table th.num { text-align: right; }
+
+        .risks-table td {
+            padding: 6px 8px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.4;
+        }
+
+        .risks-table td.num {
+            text-align: right;
+            white-space: nowrap;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .risks-table tr:nth-child(even) td { background: var(--bg-light); }
+
+        .prob-badge {
+            display: inline-block;
+            font-size: 6.5pt;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 8px;
+            text-transform: lowercase;
+            letter-spacing: 0.3px;
+        }
+
+        .prob-low { background: #dcedc8; color: #33691e; }
+        .prob-mid { background: #fff3c4; color: #856404; }
+        .prob-high { background: #f8d7da; color: #721c24; }
+
+        /* ===== QA BLOCK ===== */
+        .qa-intro {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 12px;
+        }
+
+        .qa-card {
+            padding: 10px 14px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            background: var(--bg-light);
+            border-left: 3px solid var(--cyan);
+        }
+
+        .qa-title {
+            font-size: 9pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .qa-text {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .qa-closing {
+            background: var(--navy);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-size: 8.5pt;
+            line-height: 1.5;
+        }
+
+        /* ===== DISCLAIMER ===== */
+        .disclaimer {
+            font-size: 6.5pt;
+            color: var(--text-muted);
+            line-height: 1.45;
+            padding: 8px 12px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 6.5pt;
+            color: var(--text-muted);
+        }
+
+        .page-footer-line {
+            position: absolute;
+            top: 0;
+            left: 28px;
+            right: 28px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.015;
+            background-image: url('../assets/gg-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+{% set total_pages = 2 + (1 if risks else 0) + (1 if qa_block else 0) %}
+
+<div class="watermark"></div>
+
+<!-- ==================== PAGE 1 - TIMELINE ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="doc-title">Дорожная карта и смета</div>
+        <div class="doc-subtitle">Операционная детализация вашего плана подготовки</div>
+
+        <div class="accent-line"></div>
+
+        {% if intro_text %}
+        <div class="intro-text">{{ intro_text }}</div>
+        {% endif %}
+
+        <div class="section-label">Таймлайн подготовки</div>
+
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th style="width: 16%;">Период</th>
+                    <th style="width: 36%;">Ключевые задачи</th>
+                    <th style="width: 34%;">Deliverables</th>
+                    <th style="width: 14%;">Ответственный</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in timeline %}
+                <tr>
+                    <td class="timeline-period">{{ row.period }}</td>
+                    <td>
+                        <ul class="timeline-list">
+                            {% for task in row.tasks %}<li>{{ task }}</li>{% endfor %}
+                        </ul>
+                    </td>
+                    <td>
+                        <ul class="timeline-list">
+                            {% for d in row.deliverables %}<li>{{ d }}</li>{% endfor %}
+                        </ul>
+                    </td>
+                    <td class="timeline-owner">{{ row.owner }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if disclaimer_timeline %}
+        <div class="disclaimer">{{ disclaimer_timeline }}</div>
+        {% endif %}
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation · Дорожная карта</span>
+        <span>1 / {{ total_pages }}</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2 - COSTS ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="section-label">Смета проекта</div>
+
+        <!-- БЛОК A: Подготовка и подача -->
+        <div class="cost-block">
+            <div class="cost-block-title">A. Расходы на подготовку и подачу</div>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th style="width: 42%;">Позиция</th>
+                        <th class="num" style="width: 14%;">USD</th>
+                        <th class="num" style="width: 16%;">₽</th>
+                        <th style="width: 28%;">Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in cost_preparation %}
+                    <tr>
+                        <td>{{ row.item }}</td>
+                        <td class="num">{% if row.cost_usd is defined and row.cost_usd is not none %}${{ "{:,}".format(row.cost_usd) }}{% else %}-{% endif %}</td>
+                        <td class="num">{% if row.cost_rub is defined and row.cost_rub is not none %}{{ "{:,}".format(row.cost_rub).replace(",", " ") }} ₽{% else %}-{% endif %}</td>
+                        <td class="note">{{ row.note or '' }}</td>
+                    </tr>
+                    {% endfor %}
+                    {% if cost_preparation_subtotal %}
+                    <tr class="subtotal">
+                        <td>Итого подготовка</td>
+                        <td class="num">{{ cost_preparation_subtotal.usd or '-' }}</td>
+                        <td class="num">{{ cost_preparation_subtotal.rub or '-' }}</td>
+                        <td></td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- БЛОК B: Менторство -->
+        <div class="cost-block">
+            <div class="cost-block-title">B. Стоимость менторства GG</div>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th style="width: 42%;">Тариф</th>
+                        <th class="num" style="width: 14%;">₽/мес</th>
+                        <th class="num" style="width: 10%;">Мес.</th>
+                        <th class="num" style="width: 16%;">Итого ₽</th>
+                        <th style="width: 18%;">Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="highlight">
+                        <td>{{ cost_mentorship.tariff_name }}</td>
+                        <td class="num">{% if cost_mentorship.monthly_rub is string %}{{ cost_mentorship.monthly_rub }}{% else %}{{ "{:,}".format(cost_mentorship.monthly_rub).replace(",", " ") }}{% endif %}</td>
+                        <td class="num">{{ cost_mentorship.months }}</td>
+                        <td class="num">{% if cost_mentorship.total_rub is string %}{{ cost_mentorship.total_rub }}{% else %}{{ "{:,}".format(cost_mentorship.total_rub).replace(",", " ") }}{% endif %}</td>
+                        <td class="note">{{ cost_mentorship.note or '' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- БЛОК C: Tuition -->
+        <div class="cost-block">
+            <div class="cost-block-title">C. Стоимость обучения в целевых вузах (оценка, год)</div>
+            <table class="cost-table">
+                <thead>
+                    <tr>
+                        <th style="width: 42%;">Категория</th>
+                        <th class="num" style="width: 16%;">Мин. USD</th>
+                        <th class="num" style="width: 16%;">Макс. USD</th>
+                        <th style="width: 26%;">Примечание</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in cost_tuition %}
+                    <tr {% if row.highlight %}class="highlight"{% endif %}>
+                        <td>{{ row.category }}</td>
+                        <td class="num">{% if row.range_low_usd is defined and row.range_low_usd is not none %}{% if row.range_low_usd < 0 %}-${{ "{:,}".format(-row.range_low_usd) }}{% else %}${{ "{:,}".format(row.range_low_usd) }}{% endif %}{% else %}-{% endif %}</td>
+                        <td class="num">{% if row.range_high_usd is defined and row.range_high_usd is not none %}{% if row.range_high_usd < 0 %}-${{ "{:,}".format(-row.range_high_usd) }}{% else %}${{ "{:,}".format(row.range_high_usd) }}{% endif %}{% else %}-{% endif %}</td>
+                        <td class="note">{{ row.note or '' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ИТОГИ -->
+        <div class="totals-box">
+            {% if totals.preparation_rub_range %}
+            <div class="totals-item">
+                <div class="totals-label">Подготовка</div>
+                <div class="totals-value">{{ totals.preparation_rub_range }}</div>
+            </div>
+            {% endif %}
+            {% if totals.mentorship_rub %}
+            <div class="totals-item">
+                <div class="totals-label">Менторство GG</div>
+                <div class="totals-value">{{ totals.mentorship_rub }}</div>
+            </div>
+            {% endif %}
+            {% if totals.year_one_net_cost_usd %}
+            <div class="totals-item">
+                <div class="totals-label">1-й год обучения (net)</div>
+                <div class="totals-value">{{ totals.year_one_net_cost_usd }}</div>
+            </div>
+            {% endif %}
+        </div>
+
+        <div class="disclaimer">
+            Цифры - оценка на дату документа. Итоговые расходы зависят от финального списка вузов, результатов тестов, политик financial aid и личных условий семьи. Курс ₽/$ принят по текущему рынку и может меняться.
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation · Дорожная карта</span>
+        <span>2 / {{ total_pages }}</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 3 - RISKS (опционально) ==================== -->
+{% if risks %}
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="section-label">Риски и план митигации</div>
+
+        <table class="risks-table">
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Риск</th>
+                    <th style="width: 12%;">Вероятность</th>
+                    <th style="width: 42%;">Как митигируем</th>
+                    <th class="num" style="width: 16%;">Стоимость</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in risks %}
+                <tr>
+                    <td><strong>{{ r.risk }}</strong></td>
+                    <td>
+                        {% set p = (r.probability or '')|lower %}
+                        <span class="prob-badge {% if 'низ' in p %}prob-low{% elif 'выс' in p %}prob-high{% else %}prob-mid{% endif %}">{{ r.probability }}</span>
+                    </td>
+                    <td>{{ r.mitigation }}</td>
+                    <td class="num">
+                        {% if r.cost_rub is defined and r.cost_rub is not none %}
+                            {% if r.cost_rub == 0 %}0 ₽{% else %}+{{ "{:,}".format(r.cost_rub).replace(",", " ") }} ₽{% endif %}
+                        {% elif r.cost_usd is defined and r.cost_usd is not none %}
+                            +${{ "{:,}".format(r.cost_usd) }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="disclaimer">
+            Риск-план - рабочий документ. Мы пересматриваем его на контрольных точках (после тестов, после диагностики списка вузов, после получения первых ответов от приёмных комиссий) и корректируем митигацию под фактические результаты.
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation · Дорожная карта</span>
+        <span>3 / {{ total_pages }}</span>
+    </div>
+</div>
+{% endif %}
+
+<!-- ==================== PAGE 4 - QA BLOCK (опционально) ==================== -->
+{% if qa_block %}
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="section-label">{{ qa_block.title }}</div>
+
+        {% if qa_block.intro %}
+        <div class="qa-intro">{{ qa_block.intro }}</div>
+        {% endif %}
+
+        {% for p in qa_block.points %}
+        <div class="qa-card">
+            <div class="qa-title">{{ p.title }}</div>
+            <div class="qa-text">{{ p.text }}</div>
+        </div>
+        {% endfor %}
+
+        {% if qa_block.closing_note %}
+        <div class="qa-closing">{{ qa_block.closing_note }}</div>
+        {% endif %}
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation · Дорожная карта</span>
+        <span>{{ 3 + (1 if risks else 0) }} / {{ total_pages }}</span>
+    </div>
+</div>
+{% endif %}
+
+</body>
+</html>
