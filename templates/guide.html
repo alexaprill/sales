@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Гайд по поступлению за рубеж - Global Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --navy-light: #1e3a5f;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+            background: white;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        /* ===== HEADER ===== */
+        .header-bar {
+            background: var(--navy);
+            padding: 14px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-logo { height: 24px; width: auto; }
+
+        /* ===== CONTENT ===== */
+        .content { padding: 22px 32px 20px 32px; }
+
+        /* ===== TITLE ===== */
+        .page-title {
+            font-size: 18pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+
+        .page-subtitle {
+            font-size: 9.5pt;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        /* ===== SECTION LABELS ===== */
+        .section-label {
+            font-size: 8pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            margin-top: 14px;
+        }
+
+        .section-label:first-child { margin-top: 0; }
+
+        /* ===== BODY TEXT ===== */
+        .body-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* ===== BULLET LIST ===== */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+
+        .bullet-list li {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            padding: 2px 0 2px 14px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        .bullet-list li strong {
+            color: var(--text);
+        }
+
+        /* ===== FACTS ROW ===== */
+        .facts-row {
+            display: flex;
+            margin: 12px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .fact-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 4px;
+            border-right: 1px solid var(--border);
+        }
+        .fact-item:last-child { border-right: none; }
+
+        .fact-number {
+            font-size: 14pt;
+            font-weight: 800;
+            color: var(--navy);
+            display: block;
+        }
+
+        .fact-label {
+            font-size: 6pt;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: var(--bg-light);
+            border-left: 3px solid var(--cyan);
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            margin: 10px 0;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--cyan);
+            margin-bottom: 3px;
+        }
+
+        .info-box-text {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ===== HIGHLIGHT BOX (navy) ===== */
+        .highlight-box {
+            background: var(--navy);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        .highlight-box-title {
+            font-size: 9.5pt;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .highlight-box-text {
+            font-size: 8pt;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* ===== TWO COLUMNS ===== */
+        .two-cols {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .col { flex: 1; }
+
+        .col-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        /* ===== SUB-SECTION ===== */
+        .sub-label {
+            font-size: 8pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+            margin-top: 8px;
+        }
+
+        /* ===== DOCS TABLE ===== */
+        .docs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 8pt;
+        }
+
+        .docs-table td {
+            padding: 5px 10px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .docs-table td:first-child {
+            font-weight: 600;
+            color: var(--text);
+            width: 40%;
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 10px 20px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .cta-title {
+            font-size: 11pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .cta-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .cta-contacts {
+            font-size: 8pt;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 7pt;
+            color: var(--text-muted);
+        }
+
+        .page-footer-line {
+            position: absolute;
+            top: 0;
+            left: 32px;
+            right: 32px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.015;
+            background-image: url('../assets/gg-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== COMPACT BULLET for nested ===== */
+        .bullet-list.compact li {
+            font-size: 8pt;
+            padding: 1px 0 1px 14px;
+        }
+
+        .bullet-list.compact li::before {
+            top: 6px;
+            width: 4px;
+            height: 4px;
+        }
+
+        /* ===== PROMO CODE BOX ===== */
+        .promo-box {
+            background: var(--navy);
+            color: white;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin: 12px 0;
+            text-align: center;
+        }
+
+        .promo-box-title {
+            font-size: 10pt;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .promo-code {
+            display: inline-block;
+            background: var(--cyan);
+            color: white;
+            font-size: 12pt;
+            font-weight: 800;
+            padding: 4px 16px;
+            border-radius: 4px;
+            margin: 6px 0;
+            letter-spacing: 2px;
+        }
+
+        .promo-box-text {
+            font-size: 8pt;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+
+        /* ===== STEP boxes (compact) ===== */
+        .step {
+            display: flex;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .step-number {
+            background: var(--navy);
+            color: white;
+            font-size: 11pt;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            min-width: 30px;
+        }
+
+        .step-body {
+            flex: 1;
+            padding: 7px 12px;
+            background: var(--bg-light);
+        }
+
+        .step-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 1px;
+        }
+
+        .step-text {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="page-title">Гайд по поступлению за рубеж</div>
+        <div class="page-subtitle">Все, что нужно знать, если ты только начинаешь разбираться</div>
+        <div class="accent-line"></div>
+
+        <!-- О GG -->
+        <div class="section-label">О нас</div>
+        <div class="body-text">
+            Global Generation - это команда менторов, которые сами учились в Yale, Harvard, Duke, Bennington и других топовых вузах. Мы не просто консультируем - мы сами прошли через поступление, получали стипендии и знаем процесс изнутри. Помогаем со стратегией, документами, стипендиями и сопровождаем на каждом этапе.
+        </div>
+
+        <div class="facts-row">
+            <div class="fact-item">
+                <span class="fact-number">$30M+</span>
+                <span class="fact-label">финансирования</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">98%</span>
+                <span class="fact-label">поступают</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">1000+</span>
+                <span class="fact-label">кейсов</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">$300K</span>
+                <span class="fact-label">средний грант</span>
+            </div>
+        </div>
+
+        <!-- Зачем учиться за рубежом -->
+        <div class="section-label">Зачем учиться за рубежом</div>
+        <ul class="bullet-list">
+            <li><strong>Диплом, который котируется везде</strong> - выпускники работают в любой стране мира</li>
+            <li><strong>Возможность остаться и работать</strong> - рабочие визы, стажировки, карьерные программы после выпуска</li>
+            <li><strong>Среда, комьюнити, новый уровень</strong> - университет формирует мышление, окружение и связи на всю жизнь</li>
+            <li><strong>Стипендии реально покрывают 50-100% расходов</strong> - большинство наших студентов учатся бесплатно или почти бесплатно</li>
+        </ul>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">Образование за рубежом доступнее, чем кажется</div>
+            <div class="highlight-box-text">
+                Стоимость обучения может достигать $60-80K в год. Но с правильной стратегией подачи можно получить финансирование, которое покрывает от 50% до 100% всех расходов. Средний грант наших клиентов - $300K за весь период обучения.
+            </div>
+        </div>
+
+        <!-- Поступление в США -->
+        <div class="section-label">Как устроено поступление в США</div>
+
+        <div class="two-cols">
+            <div class="col">
+                <div class="col-title" style="color: var(--cyan);">Бакалавриат</div>
+                <ul class="bullet-list compact">
+                    <li>Подача через <strong>Common App</strong> или Coalition App</li>
+                    <li>Дедлайны: <strong>Early</strong> - ноябрь, <strong>Regular</strong> - январь</li>
+                    <li>Нужен <strong>SAT</strong> или ACT (не везде)</li>
+                    <li>Эссе, рекомендации, внеклассные активности</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="col-title" style="color: var(--blue);">Магистратура / PhD</div>
+                <ul class="bullet-list compact">
+                    <li>Подача напрямую через <strong>сайт вуза</strong></li>
+                    <li><strong>GRE / GMAT</strong> (не везде обязательны)</li>
+                    <li>Statement of Purpose, рекомендации, CV</li>
+                    <li>Дедлайны: <strong>декабрь - февраль</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">Когда начинать?</div>
+            <div class="info-box-text">
+                Идеально - за <strong>12-18 месяцев</strong> до начала учебы. Это время нужно на подготовку тестов, сбор документов и написание эссе.
+            </div>
+        </div>
+
+        <!-- Поступление в Европу -->
+        <div class="section-label">Как устроено поступление в Европу</div>
+
+        <div class="two-cols">
+            <div class="col">
+                <div class="col-title" style="color: var(--cyan);">Италия (популярное направление)</div>
+                <ul class="bullet-list compact">
+                    <li><strong>Бесплатное или дешевое</strong> обучение</li>
+                    <li>Стипендии DSU по доходу семьи</li>
+                    <li>Документы через консульство</li>
+                    <li>Дедлайны: <strong>апрель - июль</strong></li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="col-title" style="color: var(--blue);">Другие страны Европы</div>
+                <ul class="bullet-list compact">
+                    <li>У каждой страны <strong>своя система</strong> подачи</li>
+                    <li>Часто нужен перевод документов</li>
+                    <li>Языковые сертификаты: <strong>IELTS / TOEFL</strong></li>
+                    <li>Дедлайны: обычно <strong>январь - июнь</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>1 / 3</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <!-- Документы -->
+        <div class="section-label">Какие документы обычно нужны</div>
+
+        <table class="docs-table">
+            <tr>
+                <td>Транскрипт / аттестат</td>
+                <td>Оценки за последние годы обучения, переведенные на английский</td>
+            </tr>
+            <tr>
+                <td>Языковой сертификат</td>
+                <td>IELTS, TOEFL или Duolingo English Test - зависит от вуза</td>
+            </tr>
+            <tr>
+                <td>Мотивационное письмо / эссе</td>
+                <td>Рассказ о себе, целях и мотивации - ключевой документ</td>
+            </tr>
+            <tr>
+                <td>Рекомендательные письма</td>
+                <td>Обычно 2-3 письма от преподавателей или работодателей</td>
+            </tr>
+            <tr>
+                <td>CV / портфолио</td>
+                <td>Для магистратуры и творческих направлений</td>
+            </tr>
+            <tr>
+                <td>Финансовые документы</td>
+                <td>Справки о доходах семьи - для подачи на стипендии</td>
+            </tr>
+        </table>
+
+        <!-- Стипендии -->
+        <div class="section-label">Как работают стипендии и финансирование</div>
+
+        <div class="two-cols">
+            <div class="col">
+                <div class="col-title" style="color: var(--cyan);">В США</div>
+                <ul class="bullet-list compact">
+                    <li><strong>Need-based</strong> (по доходу семьи) - вуз смотрит, сколько семья может заплатить, и покрывает разницу</li>
+                    <li><strong>Merit-based</strong> (за достижения) - за академические результаты, спорт, лидерство, таланты</li>
+                    <li>Многие вузы комбинируют оба типа</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="col-title" style="color: var(--blue);">В Европе</div>
+                <ul class="bullet-list compact">
+                    <li><strong>Государственные гранты</strong> - Erasmus+, DAAD, DSU в Италии</li>
+                    <li><strong>Университетские стипендии</strong> - за успеваемость и активности</li>
+                    <li><strong>Бесплатное обучение</strong> - Германия, Чехия, Италия</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">Почему сложно получить полное финансирование самостоятельно?</div>
+            <div class="info-box-text">
+                Конкурс на стипендии высокий - нужна сильная заявка, правильная стратегия подачи и подача в правильные вузы. Именно поэтому наши клиенты в среднем получают <strong>$300K</strong> за весь период обучения - мы знаем, как выстроить процесс.
+            </div>
+        </div>
+
+        <!-- Портфолио и достижения -->
+        <div class="section-label">Что усиливает заявку: портфолио и достижения</div>
+        <div class="body-text">
+            Вузы смотрят не только на оценки - им важен твой профиль целиком. Вот что может быть достижением:
+        </div>
+
+        <div class="two-cols">
+            <div class="col">
+                <ul class="bullet-list compact">
+                    <li>Олимпиады, конкурсы, научные конференции</li>
+                    <li>Волонтерство и социальные проекты</li>
+                    <li>Стажировки, исследования, публикации</li>
+                </ul>
+            </div>
+            <div class="col">
+                <ul class="bullet-list compact">
+                    <li>Спортивные достижения (особенно NCAA в США)</li>
+                    <li>Творческие проекты: выставки, кино, музыка, дизайн</li>
+                    <li>Лидерство: организация мероприятий, клубы</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="body-text">
+            <strong>Портфолио</strong> нужно для творческих направлений (искусство, дизайн, архитектура, кино), некоторых магистратур и PhD. Даже если кажется, что достижений мало - правильная подача и стратегия делают разницу.
+        </div>
+
+        <!-- Что делает GG -->
+        <div class="section-label">Что делает GG</div>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+                <div class="step-title">Подбираем вузы и стратегию</div>
+                <div class="step-text">Анализируем твой профиль и находим вузы, где у тебя максимальные шансы на поступление и финансирование.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+                <div class="step-title">Готовим все документы вместе</div>
+                <div class="step-text">Эссе, мотивационные письма, CV, портфолио - работаем над каждым документом до идеала.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+                <div class="step-title">Помогаем получить максимальное финансирование</div>
+                <div class="step-text">Знаем, куда и как подавать на стипендии, чтобы получить максимум.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-body">
+                <div class="step-title">Еженедельные встречи с ментором</div>
+                <div class="step-text">Персональный ментор из твоего направления, который сам прошел этот путь.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-body">
+                <div class="step-title">Сопровождаем до зачисления</div>
+                <div class="step-text">Не бросаем после подачи - помогаем с визами, жильем, адаптацией.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>2 / 3</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 3 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <!-- Форматы работы -->
+        <div class="section-label">Форматы работы с GG</div>
+
+        <div class="step">
+            <div class="step-number" style="background: var(--cyan);">&#10003;</div>
+            <div class="step-body">
+                <div class="step-title">Курс "Самостоятельное поступление" - 29 999 &#8381; разово</div>
+                <div class="step-text">Пошаговый портал с видеоуроками, шаблонами и чек-листами + чат поддержки. Для тех, кто готов работать сам.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number" style="background: var(--cyan);">&#10003;</div>
+            <div class="step-body">
+                <div class="step-title">Частичное менторство - 55 000 &#8381;/мес</div>
+                <div class="step-text">Персональный ментор на связи в чате + стратегический созвон. Для тех, кому нужна помощь точечно.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number" style="background: var(--blue);">&#9733;</div>
+            <div class="step-body">
+                <div class="step-title">Полное менторство - 80 000 &#8381;/мес</div>
+                <div class="step-text">4 встречи/мес, домашние задания, полное сопровождение, гарантия поступления (от 6 мес.). Основной формат.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number" style="background: var(--navy);">+</div>
+            <div class="step-body">
+                <div class="step-title">Премиум менторство - по запросу</div>
+                <div class="step-text">6 встреч/мес, 2 ментора, полностью индивидуальная программа для сложных кейсов.</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">Помесячная оплата - без долгосрочных контрактов</div>
+            <div class="info-box-text">
+                Ты не подписываешь контракт на полгода. Можно начать с одного месяца, посмотреть на результат и решить, продолжать ли. Большинство наших клиентов остаются, потому что видят прогресс.
+            </div>
+        </div>
+
+        <!-- Гарантии -->
+        <div class="section-label">Наши гарантии</div>
+        <ul class="bullet-list">
+            <li><strong>Минимум 1 приглашение (offer)</strong> из согласованного списка вузов</li>
+            <li><strong>Полный возврат средств</strong> при отсутствии приглашений (Полное/Премиум, от 6 мес.)</li>
+            <li><strong>Подача на максимальное финансирование</strong> - мы заинтересованы в твоем результате</li>
+        </ul>
+
+        <div class="body-text" style="font-size: 8pt;">
+            Договор составлен юристами с опытом работы в РФ и США: <strong>global-generations.com/individualnyj-dogovor</strong>
+        </div>
+
+        <!-- Промокод -->
+        <div class="promo-box">
+            <div class="promo-box-title">Специальное предложение для тебя</div>
+            <div class="promo-code">WELCOME10</div>
+            <div class="promo-box-text">
+                10% скидка на курс "Самостоятельное поступление"<br>
+                Назови промокод при обращении
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <div class="cta-title">Готов разобраться в поступлении?</div>
+            <div class="cta-text">Напиши нам - поможем понять, с чего начать именно тебе</div>
+            <div class="cta-contacts">
+                global-generations.com &nbsp; | &nbsp; Telegram: @alexandraGlobal
+            </div>
+        </div>
+
+        <div class="facts-row" style="margin-top: 12px;">
+            <div class="fact-item">
+                <span class="fact-number">$30M+</span>
+                <span class="fact-label">финансирования</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">98%</span>
+                <span class="fact-label">поступают</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">1000+</span>
+                <span class="fact-label">кейсов</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">$300K</span>
+                <span class="fact-label">средний грант</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>3 / 3</span>
+    </div>
+</div>
+
+</body>
+</html>
