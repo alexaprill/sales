@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Для родителей - Global Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --navy-light: #1e3a5f;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+            background: white;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        /* ===== HEADER ===== */
+        .header-bar {
+            background: var(--navy);
+            padding: 14px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-logo { height: 24px; width: auto; }
+
+        /* ===== CONTENT ===== */
+        .content { padding: 22px 32px 20px 32px; }
+
+        /* ===== TITLE ===== */
+        .page-title {
+            font-size: 18pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+
+        .page-subtitle {
+            font-size: 9.5pt;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin-bottom: 16px;
+        }
+
+        /* ===== SECTION LABELS ===== */
+        .section-label {
+            font-size: 8pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            margin-top: 14px;
+        }
+
+        .section-label:first-child { margin-top: 0; }
+
+        /* ===== BODY TEXT ===== */
+        .body-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        /* ===== BULLET LIST ===== */
+        .bullet-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+
+        .bullet-list li {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            padding: 2px 0 2px 14px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .bullet-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        .bullet-list li strong {
+            color: var(--text);
+        }
+
+        /* ===== FACTS ROW ===== */
+        .facts-row {
+            display: flex;
+            margin: 12px 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .fact-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 4px;
+            border-right: 1px solid var(--border);
+        }
+        .fact-item:last-child { border-right: none; }
+
+        .fact-number {
+            font-size: 14pt;
+            font-weight: 800;
+            color: var(--navy);
+            display: block;
+        }
+
+        .fact-label {
+            font-size: 6pt;
+            font-weight: 500;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: var(--bg-light);
+            border-left: 3px solid var(--cyan);
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            margin: 10px 0;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--cyan);
+            margin-bottom: 3px;
+        }
+
+        .info-box-text {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ===== HIGHLIGHT BOX (navy) ===== */
+        .highlight-box {
+            background: var(--navy);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+
+        .highlight-box-title {
+            font-size: 9.5pt;
+            font-weight: 700;
+            margin-bottom: 3px;
+        }
+
+        .highlight-box-text {
+            font-size: 8pt;
+            font-weight: 400;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* ===== PROCESS STEPS ===== */
+        .step {
+            display: flex;
+            margin-bottom: 6px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .step-number {
+            background: var(--navy);
+            color: white;
+            font-size: 11pt;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            min-width: 34px;
+        }
+
+        .step-body {
+            flex: 1;
+            padding: 8px 14px;
+            background: var(--bg-light);
+        }
+
+        .step-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 2px;
+        }
+
+        .step-text {
+            font-size: 7.5pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== PRICING TABLE ===== */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 8pt;
+        }
+
+        .pricing-table th {
+            background: var(--navy);
+            color: white;
+            padding: 6px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table tr.recommended {
+            background: var(--bg-light);
+        }
+
+        .pricing-table tr.recommended td {
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--cyan);
+            color: white;
+            font-size: 5.5pt;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 2px;
+            margin-left: 4px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        /* ===== GUARANTEE LIST ===== */
+        .guarantee-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 8px 0;
+        }
+
+        .guarantee-list li {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            padding: 3px 0 3px 18px;
+            position: relative;
+            line-height: 1.5;
+        }
+
+        .guarantee-list li.yes::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--cyan);
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        .guarantee-list li.yes::after {
+            content: "";
+            position: absolute;
+            left: 3px;
+            top: 8px;
+            width: 6px;
+            height: 3px;
+            border-left: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(-45deg);
+        }
+
+        .guarantee-list li.no::before {
+            content: "";
+            position: absolute;
+            left: 2px;
+            top: 7px;
+            width: 8px;
+            height: 8px;
+            border: 2px solid var(--text-muted);
+            border-radius: 50%;
+        }
+
+        /* ===== TWO COLUMNS ===== */
+        .two-cols {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        .col { flex: 1; }
+
+        .col-title {
+            font-size: 8pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        /* ===== PAYMENT METHODS ===== */
+        .payment-grid {
+            display: flex;
+            gap: 8px;
+            margin: 6px 0 10px 0;
+        }
+
+        .payment-item {
+            flex: 1;
+            text-align: center;
+            padding: 8px 6px;
+            background: var(--bg-light);
+            border-radius: 4px;
+            font-size: 7.5pt;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center;
+            padding: 14px 20px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+
+        .cta-title {
+            font-size: 11pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .cta-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .cta-contacts {
+            font-size: 8pt;
+            color: var(--text-muted);
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 7pt;
+            color: var(--text-muted);
+        }
+
+        .page-footer-line {
+            position: absolute;
+            top: 0;
+            left: 32px;
+            right: 32px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.015;
+            background-image: url('../assets/gg-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="page-title">Путеводитель для родителей</div>
+        <div class="page-subtitle">Все, что важно знать о поступлении за рубеж с Global Generation</div>
+        <div class="accent-line"></div>
+
+        <!-- О нас -->
+        <div class="section-label">О нас</div>
+        <div class="body-text">
+            Global Generation - это команда менторов, которые сами учились в ведущих университетах США и Европы и получали реальное финансирование. Мы не просто консультируем - мы прошли через весь процесс: поступление, стипендии, адаптацию. Наш опыт - от 2 до 4+ лет работы с абитуриентами, сотни успешных историй.
+        </div>
+
+        <div class="facts-row">
+            <div class="fact-item">
+                <span class="fact-number">$30M+</span>
+                <span class="fact-label">финансирования</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">98%</span>
+                <span class="fact-label">поступают</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">1000+</span>
+                <span class="fact-label">кейсов</span>
+            </div>
+            <div class="fact-item">
+                <span class="fact-number">$300K</span>
+                <span class="fact-label">средний грант</span>
+            </div>
+        </div>
+
+        <div class="body-text">
+            Мы сопровождаем студента на каждом этапе, но не делаем все за него. В топовые вузы невозможно просто "отправить" ребенка - приемные комиссии оценивают именно его. Наша задача - помочь раскрыть потенциал, подготовить сильные документы и выстроить стратегию. Мы используем AI-инструменты, собственную систему отслеживания прогресса и интерактивные ресурсы.
+        </div>
+
+        <!-- Почему образование за рубежом -->
+        <div class="section-label">Почему образование за рубежом</div>
+        <ul class="bullet-list">
+            <li><strong>Международно признаваемый диплом</strong> - выпускники работают в любой стране мира</li>
+            <li><strong>Возможность легально остаться за границей</strong> - рабочие визы, стажировки, карьерные программы</li>
+            <li><strong>Студенческая жизнь и комьюнити</strong> - новая среда, связи, личностное развитие</li>
+            <li><strong>Не просто знания, а среда</strong> - университет формирует мышление, окружение и возможности</li>
+            <li><strong>Реальный конкурс, а не "договорные" вузы</strong> - мы работаем с топовыми университетами с настоящим отбором</li>
+            <li><strong>Инвестиция, которая окупается</strong> - вложение 50-100K &#8381; в подготовку может принести стипендию в 10-30 раз больше</li>
+        </ul>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">Образование за рубежом - это инвестиция в будущее</div>
+            <div class="highlight-box-text">
+                Стоимость обучения в топовых вузах может достигать $60-80K в год. Но большинство наших студентов получают финансирование, которое покрывает от 50% до 100% расходов. Средний грант наших клиентов - $300K за весь период обучения.
+            </div>
+        </div>
+
+        <!-- Как устроен процесс -->
+        <div class="section-label">Как устроен процесс</div>
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+                <div class="step-title">Персональный ментор из целевого направления</div>
+                <div class="step-text">Ментор - выпускник или студент топового вуза по направлению вашего ребенка. Знает процесс изнутри.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+                <div class="step-title">Еженедельные встречи и домашние задания</div>
+                <div class="step-text">55-минутные онлайн-встречи каждую неделю, задания между встречами, обратная связь по каждому документу.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+                <div class="step-title">Команда поддержки: care-менеджер + личный менеджер</div>
+                <div class="step-text">Отдел заботы отвечает в течение 24 часов. Даже без встреч - еженедельная проверка, все ли в порядке.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-body">
+                <div class="step-title">Карточка абитуриента - прогресс виден в любой момент</div>
+                <div class="step-text">Вы всегда видите, на каком этапе находится подготовка, какие задачи выполнены и что впереди.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>1 / 3</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <!-- Почему помесячная оплата -->
+        <div class="section-label">Почему помесячная оплата</div>
+        <div class="body-text">
+            Мы принципиально не берем оплату за полгода или год вперед. Помесячная оплата - это наш способ показать, что мы уверены в качестве работы:
+        </div>
+        <ul class="bullet-list">
+            <li><strong>Четкий, осязаемый результат каждый месяц</strong> - вы видите, что именно было сделано</li>
+            <li><strong>Можно прекратить, взять паузу, вернуться</strong> - по той же цене, без штрафов</li>
+            <li><strong>Можно сменить ментора или поменять подход</strong> - гибкость на каждом этапе</li>
+            <li><strong>Нет риска "заплатить за год и потерять контроль"</strong> - вы всегда принимаете решение</li>
+            <li><strong>Можно взять 1 месяц "на пробу"</strong> - разобраться, подходит ли это вашему ребенку</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-box-title">Минимальный срок - 1 месяц</div>
+            <div class="info-box-text">
+                Вы не подписываете контракт на полгода. Один месяц - и вы уже видите результат и понимаете, стоит ли продолжать. Большинство наших клиентов остаются, потому что видят прогресс.
+            </div>
+        </div>
+
+        <!-- Форматы и стоимость -->
+        <div class="section-label">Форматы и стоимость</div>
+
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Формат</th>
+                    <th>Стоимость</th>
+                    <th>Что включено</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Курс "Самостоятельное поступление"</td>
+                    <td>29 999 &#8381; разово</td>
+                    <td>Пошаговый портал с видеоуроками, шаблонами и чек-листами + чат поддержки</td>
+                </tr>
+                <tr>
+                    <td>Частичное менторство</td>
+                    <td>55 000 &#8381;/мес</td>
+                    <td>Персональный ментор на связи в чате, стратегический созвон</td>
+                </tr>
+                <tr class="recommended">
+                    <td>Полное менторство <span class="badge">Основной</span></td>
+                    <td>80 000 &#8381;/мес</td>
+                    <td>4 встречи/мес, домашние задания, гарантия поступления (от 6 мес.)</td>
+                </tr>
+                <tr>
+                    <td>Премиум менторство</td>
+                    <td>По запросу</td>
+                    <td>6 встреч/мес, 2 ментора, полностью индивидуальная программа</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Гарантии -->
+        <div class="section-label">Гарантии</div>
+        <div class="body-text">
+            Мы фиксируем гарантии в договоре, составленном юристами с опытом работы в РФ и США.
+        </div>
+
+        <div class="two-cols">
+            <div class="col">
+                <div class="col-title" style="color: var(--cyan);">Что мы гарантируем</div>
+                <ul class="guarantee-list">
+                    <li class="yes">Минимум 1 приглашение (offer) из согласованного списка вузов</li>
+                    <li class="yes">При отсутствии приглашений (Полное/Премиум, от 6 мес.) - полный возврат средств</li>
+                    <li class="yes">Подача на максимальное финансирование</li>
+                    <li class="yes">Помощь с переговорами по стипендии</li>
+                    <li class="yes">Консультация по визовому процессу</li>
+                </ul>
+            </div>
+            <div class="col">
+                <div class="col-title" style="color: var(--text-muted);">Что зависит не от нас</div>
+                <ul class="guarantee-list">
+                    <li class="no">Размер стипендии/гранта - решает университет</li>
+                    <li class="no">Выдача визы - решает консульство</li>
+                </ul>
+                <div class="info-box" style="margin-top: 8px;">
+                    <div class="info-box-text">
+                        Но мы делаем все возможное: подаемся на максимальное финансирование, помогаем с переговорами и консультируем по визе.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Роль родителя -->
+        <div class="section-label">Роль родителя в процессе</div>
+        <ul class="bullet-list">
+            <li><strong>Договор заключается на родителя</strong> (если ребенок несовершеннолетний)</li>
+            <li><strong>Можно присутствовать на встречах</strong> и задавать вопросы в чате</li>
+            <li><strong>Помощь с финансовыми документами</strong> - для стипендий часто нужны справки о доходах</li>
+            <li><strong>Моральная поддержка</strong> - процесс поступления долгий и сложный, ваша поддержка важна</li>
+            <li><strong>Доступ к карточке абитуриента</strong> - видите прогресс в любой момент</li>
+        </ul>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>2 / 3</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 3 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <!-- Способы оплаты -->
+        <div class="section-label">Способы оплаты</div>
+        <div class="payment-grid">
+            <div class="payment-item">Российская карта</div>
+            <div class="payment-item">Зарубежная карта</div>
+            <div class="payment-item">Криптовалюта</div>
+        </div>
+        <div class="body-text" style="font-size: 8pt;">
+            Работаем по договору (для граждан РФ) или оферте (для иностранных граждан). Все условия прозрачны и зафиксированы документально.
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <div class="cta-title">Готовы начать?</div>
+            <div class="cta-text">
+                Напишите нам - мы ответим на вопросы, подберем ментора<br>и составим план подготовки для вашего ребенка.
+            </div>
+            <div class="cta-contacts">
+                globalgeneration.xyz &nbsp; | &nbsp; Telegram: @global_generation
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation</span>
+        <span>3 / 3</span>
+    </div>
+</div>
+
+</body>
+</html>

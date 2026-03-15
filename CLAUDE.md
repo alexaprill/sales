@@ -139,16 +139,30 @@
 - **Шаблон:** `templates/workplan.html`
 - **Логотип:** `assets/logo_white_gg.svg` (белый), `assets/gg-logo-header.png` (цветной)
 
+## PDF для родителей
+
+Статичный документ (без переменных) для отправки родителям клиентов. Один PDF на всех, не нужно перегенерировать.
+
+- **Шаблон:** `templates/parents.html`
+- **Генерация:** `.venv/bin/python generate_parents.py`
+- **Результат:** `output/GG_Для_родителей.pdf` + копия в `для_менеджеров/`
+- **Содержание:** О компании, почему образование за рубежом, процесс работы, помесячная оплата, форматы/цены, гарантии, роль родителя, способы оплаты, контакты
+
 ## Структура проекта
 
 ```
 GlobalGeneration-App/
-├── generate_workplan.py     # CLI генератор PDF
+├── generate_workplan.py     # CLI генератор персональных планов
+├── generate_instruction.py  # Генератор инструкции для менеджеров
+├── generate_parents.py      # Генератор PDF для родителей
 ├── mentors.json             # Данные менторов
 ├── templates/
-│   └── workplan.html        # HTML/CSS шаблон (Jinja2)
+│   ├── workplan.html        # Шаблон персонального плана (Jinja2)
+│   ├── instruction.html     # Шаблон инструкции для менеджеров
+│   └── parents.html         # Шаблон документа для родителей (статичный)
 ├── assets/                  # Логотипы, фото менторов
 ├── output/                  # Сгенерированные PDF
+├── для_менеджеров/          # Готовые PDF для менеджеров
 ├── case_1_maria.json        # Примеры: наука
 ├── case_2_dmitry.json       # Примеры: спорт
 ├── case_3_polina.json       # Примеры: творчество
