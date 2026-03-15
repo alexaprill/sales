@@ -33,7 +33,7 @@
         "id": "renata",
         "name": "Рената",
         "university": "Duke University / Oxford Brookes University",
-        "photo": null,
+        "photo": "../assets/mentor_renata.png",
         "bio": "Бакалавриат в Duke University (клеточная и молекулярная биология), PhD в Oxford Brookes. Полное финансирование $250,000+. Опыт поступления из обычной российской школы.",
         "specialization": ["биомедицина", "внеклассные активности", "эссе", "стипендии", "PhD", "бакалавриат"],
         "works_with": "Студенты научных направлений. Бакалавриат и PhD. Поиск стипендий. Поступление без олимпиадного бэкграунда.",
