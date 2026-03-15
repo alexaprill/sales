@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Инструкция - Global Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --navy-light: #1e3a5f;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 10pt;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+            background: white;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        /* ===== HEADER ===== */
+        .header-bar {
+            background: var(--navy);
+            padding: 14px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-logo { height: 24px; width: auto; }
+
+        /* ===== CONTENT ===== */
+        .content { padding: 24px 32px 20px 32px; }
+
+        /* ===== TITLE ===== */
+        .page-title {
+            font-size: 18pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .page-subtitle {
+            font-size: 10pt;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== STEPS ===== */
+        .step {
+            display: flex;
+            margin-bottom: 14px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .step-number {
+            background: var(--navy);
+            color: white;
+            font-size: 14pt;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            min-width: 42px;
+        }
+
+        .step-body {
+            flex: 1;
+            padding: 12px 16px;
+            background: var(--bg-light);
+        }
+
+        .step-title {
+            font-size: 11pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .step-text {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ===== CODE BLOCK ===== */
+        .code-block {
+            background: var(--navy);
+            color: #e0e8f0;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+            font-size: 8.5pt;
+            line-height: 1.6;
+            margin: 8px 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+
+        .code-block .comment {
+            color: #6b8aad;
+        }
+
+        .code-block .command {
+            color: var(--cyan);
+        }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: var(--bg-light);
+            border-left: 3px solid var(--cyan);
+            padding: 10px 14px;
+            border-radius: 0 6px 6px 0;
+            margin: 10px 0;
+        }
+
+        .info-box-title {
+            font-weight: 700;
+            font-size: 9pt;
+            color: var(--cyan);
+            margin-bottom: 3px;
+        }
+
+        .info-box-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.55;
+        }
+
+        /* ===== SECTION LABELS ===== */
+        .section-label {
+            font-size: 8pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 10px;
+            margin-top: 16px;
+        }
+
+        /* ===== EXAMPLE REQUEST ===== */
+        .example-box {
+            background: var(--bg-light);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin: 10px 0;
+        }
+
+        .example-label {
+            font-size: 7.5pt;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+
+        .example-text {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* ===== MENTOR TABLE ===== */
+        .mentor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 8pt;
+        }
+
+        .mentor-table th {
+            background: var(--navy);
+            color: white;
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mentor-table td {
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.45;
+        }
+
+        .mentor-table tr:nth-child(even) {
+            background: var(--bg-light);
+        }
+
+        .mentor-name-cell {
+            font-weight: 700;
+            color: var(--navy);
+            white-space: nowrap;
+        }
+
+        /* ===== PRICING TABLE ===== */
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 8.5pt;
+        }
+
+        .pricing-table th {
+            background: var(--navy);
+            color: white;
+            padding: 7px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .pricing-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-table tr.recommended {
+            background: var(--bg-light);
+        }
+
+        .pricing-table tr.recommended td {
+            font-weight: 600;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--cyan);
+            color: white;
+            font-size: 6pt;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 2px;
+            margin-left: 4px;
+            vertical-align: middle;
+            text-transform: uppercase;
+        }
+
+        /* ===== CHECKLIST ===== */
+        .checklist {
+            list-style: none;
+            padding: 0;
+            margin: 8px 0;
+        }
+
+        .checklist li {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            padding: 3px 0 3px 20px;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--cyan);
+            border-radius: 2px;
+        }
+
+        /* ===== SPECIAL BOX ===== */
+        .highlight-box {
+            background: var(--navy);
+            color: white;
+            padding: 14px 18px;
+            border-radius: 6px;
+            margin: 12px 0;
+        }
+
+        .highlight-box-title {
+            font-size: 10pt;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .highlight-box-text {
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.55;
+            opacity: 0.9;
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 7pt;
+            color: var(--text-muted);
+        }
+
+        .page-footer-line {
+            position: absolute;
+            top: 0;
+            left: 32px;
+            right: 32px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.015;
+            background-image: url('../assets/gg-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<!-- ==================== PAGE 1 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="page-title">Генерация персонального плана</div>
+        <div class="page-subtitle">Пошаговая инструкция для менеджеров GG</div>
+        <div class="accent-line"></div>
+
+        <!-- Step 1 -->
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-body">
+                <div class="step-title">Откройте Claude Code</div>
+                <div class="step-text">
+                    Запустите терминал и перейдите в папку проекта. Затем запустите Claude Code.
+                </div>
+                <div class="code-block"><span class="command">cd ~/GlobalGeneration-App</span>
+<span class="command">claude</span></div>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-body">
+                <div class="step-title">Вставьте данные клиента</div>
+                <div class="step-text">
+                    Скопируйте заметки с консультации и вставьте в чат Claude. Укажите имя клиента, направление, бюджет, сильные стороны и цели. Claude сам сформирует JSON и сгенерирует PDF.
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-body">
+                <div class="step-title">Claude генерирует PDF</div>
+                <div class="step-text">
+                    Claude автоматически создаст JSON с данными клиента, подберёт ментора, выберет рекомендованный формат и запустит генерацию PDF. Весь процесс занимает около минуты.
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-body">
+                <div class="step-title">Найдите PDF и отправьте клиенту</div>
+                <div class="step-text">
+                    Готовый файл появится в папке <strong>output/</strong>. Имя файла: <strong>workplan_Имя_дата.pdf</strong>. Откройте, проверьте и отправьте клиенту.
+                </div>
+                <div class="code-block"><span class="comment"># PDF будет здесь:</span>
+<span class="command">~/GlobalGeneration-App/output/workplan_Имя_20260315.pdf</span></div>
+            </div>
+        </div>
+
+        <div class="section-label">Пример запроса для Claude</div>
+
+        <div class="example-box">
+            <div class="example-label">Скопируйте и вставьте в Claude, заменив данные</div>
+            <div class="example-text">
+                Сгенерируй персональный план для клиента:<br><br>
+                Имя: Мария Иванова<br>
+                Направление: биология, нейронаука<br>
+                Уровень: магистратура<br>
+                Страны: США, Англия<br>
+                Бюджет: $15,000/год<br>
+                GPA: 3.9, МГУ<br><br>
+                Заметки с консультации: сильный академический профиль, 2 публикации, стажировка в лаборатории. Нужна помощь с SOP и выбором программ. Хочет исследовательскую программу. Родители участвуют в процессе.
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">Важно</div>
+            <div class="info-box-text">
+                Claude сам знает всех менторов, цены и правила оформления (благодаря файлу CLAUDE.md в проекте). Вам не нужно указывать ментора или формат - Claude подберёт автоматически. Но вы можете указать конкретного ментора, если хотите.
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation - Внутренняя инструкция</span>
+        <span>1 / 2</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 2 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+
+    <div class="content">
+        <div class="section-label">Менторы и специализации</div>
+
+        <table class="mentor-table">
+            <thead>
+                <tr>
+                    <th>Ментор</th>
+                    <th>Университет</th>
+                    <th>Специализация</th>
+                    <th>Работает с</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="mentor-name-cell">Ярослава (Яра)</td>
+                    <td>Yale University</td>
+                    <td>Нейронаука, биомедицина, Ivy League, Oxbridge</td>
+                    <td>Наука/медицина, бюджет $10K+, Англия/США, магистратура/PhD</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Александра (Саша)</td>
+                    <td>Harvard University</td>
+                    <td>Спорт + NCAA, биомедицина, Ivy League</td>
+                    <td>Спортсмены, NCAA рекрутинг, бакалавриат США</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Алёна</td>
+                    <td>Bates College</td>
+                    <td>Liberal Arts, структуризация документов</td>
+                    <td>Бакалавриат США, организация процесса</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Рената</td>
+                    <td>Duke / Oxford Brookes</td>
+                    <td>Биомедицина, эссе, стипендии, PhD</td>
+                    <td>Наука, бакалавриат/PhD, поиск стипендий</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Кристина</td>
+                    <td>Bennington College</td>
+                    <td>Искусство, портфолио, UWC</td>
+                    <td>Творческие направления, дизайн, кино</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Алиса</td>
+                    <td>Bennington College</td>
+                    <td>Кино, драматургия, сценарий</td>
+                    <td>Кино, драматургия, сценарий</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-label">Форматы и цены</div>
+
+        <table class="pricing-table">
+            <thead>
+                <tr>
+                    <th>Формат</th>
+                    <th>Стоимость</th>
+                    <th>Что включено</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Курс "Самостоятельное поступление"</td>
+                    <td>29 999 &#8381; разово</td>
+                    <td>Пошаговый портал с видеоуроками, шаблонами и чек-листами + чат поддержки</td>
+                </tr>
+                <tr>
+                    <td>Частичное менторство</td>
+                    <td>55 000 &#8381;/мес</td>
+                    <td>Персональный ментор на связи в чате, стратегический созвон</td>
+                </tr>
+                <tr class="recommended">
+                    <td>Полное менторство <span class="badge">Основной</span></td>
+                    <td>80 000 &#8381;/мес</td>
+                    <td>4 встречи/мес с ментором, домашние задания, гарантия поступления (от 8 мес.)</td>
+                </tr>
+                <tr>
+                    <td>Премиум менторство</td>
+                    <td>По запросу</td>
+                    <td>6 встреч/мес, 2 ментора, полностью индивидуальная программа</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">Какой формат рекомендовать?</div>
+            <div class="highlight-box-text">
+                В большинстве случаев рекомендуйте <strong>Полное менторство</strong> - это основной продукт GG. Курс - для ограниченного бюджета. Частичное - когда клиент может работать сам. Премиум - для сложных кейсов с короткими сроками или несколькими странами.
+            </div>
+        </div>
+
+        <div class="section-label">Чек-лист перед отправкой</div>
+
+        <ul class="checklist">
+            <li>Имя клиента указано правильно</li>
+            <li>Приветствие тёплое и персональное (не шаблонное)</li>
+            <li>Ментор подобран по направлению клиента</li>
+            <li>Сильные стороны и зоны роста соответствуют заметкам с консультации</li>
+            <li>Рекомендованный формат выделен в таблице</li>
+            <li>Спецпредложение актуально (проверьте дедлайн)</li>
+        </ul>
+
+        <div class="info-box">
+            <div class="info-box-title">Если что-то не так</div>
+            <div class="info-box-text">
+                Просто напишите Claude что исправить. Например: "Поменяй ментора на Кристину" или "Убери третью зону роста". Claude внесёт изменения и перегенерирует PDF.
+            </div>
+        </div>
+    </div>
+
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation - Внутренняя инструкция</span>
+        <span>2 / 2</span>
+    </div>
+</div>
+
+</body>
+</html>
