@@ -14,6 +14,7 @@ env/
 # Output files
 output/*.html
 output/*.pdf
+roadmap_kp/output/
 
 # OS
 .DS_Store
