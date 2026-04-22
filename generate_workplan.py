@@ -77,8 +77,10 @@ def main():
         idx = sys.argv.index("--output")
         output_name = sys.argv[idx + 1]
     else:
-        safe_name = data["client_name"].replace(" ", "_")
-        output_name = f"workplan_{safe_name}_{datetime.now().strftime('%Y%m%d')}.pdf"
+        # Формат: "КП для <Имя>.pdf". Если задан client_name_genitive - используем его
+        # (например "Артёма" вместо "Артём") для естественного звучания на русском.
+        name_for_file = data.get("client_name_genitive", data["client_name"])
+        output_name = f"КП для {name_for_file}.pdf"
 
     OUTPUT_DIR.mkdir(exist_ok=True)
     output_path = OUTPUT_DIR / output_name
