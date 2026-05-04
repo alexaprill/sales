@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Онбординг — Анастасия</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page { size: A4; margin: 0; }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --navy-light: #1e3a5f;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 10pt;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+            background: white;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 297mm;
+            padding: 0;
+            page-break-after: always;
+            overflow: hidden;
+        }
+        .page:last-child { page-break-after: auto; }
+
+        /* ===== COVER ===== */
+        .page-cover {
+            background: var(--navy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cover-logo { height: 30px; margin-bottom: 44px; }
+
+        .cover-pre {
+            font-size: 8pt;
+            font-weight: 400;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .cover-title {
+            font-size: 24pt;
+            font-weight: 800;
+            color: white;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .cover-accent-line {
+            height: 3px;
+            width: 70px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin: 22px auto;
+        }
+
+        .cover-name {
+            font-size: 20pt;
+            font-weight: 300;
+            color: var(--cyan);
+            letter-spacing: 5px;
+            text-align: center;
+        }
+
+        .cover-role {
+            font-size: 10pt;
+            color: rgba(255,255,255,0.5);
+            text-align: center;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-date {
+            font-size: 8.5pt;
+            color: rgba(255,255,255,0.3);
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        .cover-bottom {
+            position: absolute;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 7.5pt;
+            color: rgba(255,255,255,0.25);
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+        }
+
+        /* ===== HEADER ===== */
+        .header-bar {
+            background: var(--navy);
+            padding: 14px 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .header-logo { height: 24px; width: auto; }
+
+        /* ===== CONTENT ===== */
+        .content { padding: 22px 32px 18px 32px; }
+
+        /* ===== TITLES ===== */
+        .page-title {
+            font-size: 17pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+
+        .page-subtitle {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            margin-bottom: 14px;
+        }
+
+        .accent-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--blue));
+            border-radius: 2px;
+            margin-bottom: 18px;
+        }
+
+        .section-label {
+            font-size: 7.5pt;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--navy);
+            margin-bottom: 8px;
+            margin-top: 14px;
+        }
+        .section-label:first-child { margin-top: 0; }
+
+        /* ===== INFO BOX ===== */
+        .info-box {
+            background: var(--bg-light);
+            border-left: 3px solid var(--cyan);
+            padding: 9px 13px;
+            border-radius: 0 6px 6px 0;
+            margin: 8px 0;
+        }
+        .info-box-title {
+            font-weight: 700;
+            font-size: 8.5pt;
+            color: var(--cyan);
+            margin-bottom: 3px;
+        }
+        .info-box-text {
+            font-size: 8pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* ===== HIGHLIGHT BOX ===== */
+        .highlight-box {
+            background: var(--navy);
+            color: white;
+            padding: 12px 16px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .highlight-box-title {
+            font-size: 9.5pt;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .highlight-box-text {
+            font-size: 8.5pt;
+            font-weight: 400;
+            line-height: 1.5;
+            opacity: 0.88;
+        }
+
+        /* ===== LINK CARDS ===== */
+        .link-cards { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+
+        .link-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 12px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            border-left: 3px solid var(--blue);
+        }
+
+        .link-card-icon {
+            width: 28px;
+            height: 28px;
+            background: var(--navy);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            font-size: 10pt;
+            font-weight: 800;
+            flex-shrink: 0;
+            text-align: center;
+            line-height: 28px;
+        }
+
+        .link-card-body { flex: 1; }
+        .link-card-label { font-size: 8.5pt; font-weight: 700; color: var(--navy); }
+        .link-card-desc { font-size: 7.5pt; color: var(--text-secondary); margin-top: 1px; }
+        .link-card-url { font-size: 7pt; color: var(--blue); margin-top: 2px; word-break: break-all; }
+
+        /* ===== TEAM GRID ===== */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+            margin: 8px 0;
+        }
+
+        .team-card {
+            flex: 0 0 calc(50% - 4px);
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 9px 12px;
+            border-left: 3px solid var(--cyan);
+        }
+
+        .team-card.lead { border-left-color: var(--navy); }
+        .team-card.founder { border-left-color: var(--blue); background: #eef2ff; }
+        .team-card.nastya { border-left-color: var(--cyan); background: #e8f7fb; }
+
+        .team-card-name { font-size: 10pt; font-weight: 700; color: var(--navy); }
+        .team-card-role { font-size: 7.5pt; color: var(--text-muted); margin-top: 1px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .team-card-desc { font-size: 8pt; color: var(--text-secondary); margin-top: 4px; line-height: 1.4; }
+
+        /* ===== MENTOR TABLE ===== */
+        .mentor-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0;
+            font-size: 8pt;
+        }
+        .mentor-table th {
+            background: var(--navy);
+            color: white;
+            padding: 6px 9px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .mentor-table td {
+            padding: 5px 9px;
+            border-bottom: 1px solid var(--border);
+            vertical-align: top;
+            line-height: 1.4;
+        }
+        .mentor-table tr:nth-child(even) td { background: var(--bg-light); }
+        .mentor-name-cell { font-weight: 700; color: var(--navy); white-space: nowrap; }
+
+        /* ===== SPLIT TABLE ===== */
+        .split-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+        }
+        .split-table th {
+            padding: 8px 12px;
+            font-size: 9pt;
+            font-weight: 700;
+            text-align: left;
+            width: 50%;
+        }
+        .split-table th.nastya-col { background: var(--cyan); color: white; border-radius: 4px 0 0 0; }
+        .split-table th.alex-col { background: var(--navy); color: white; border-radius: 0 4px 0 0; }
+
+        .split-table td {
+            padding: 6px 12px;
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            vertical-align: top;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.45;
+        }
+        .split-table td:first-child { border-right: 1px solid var(--border); }
+        .split-table tr:nth-child(even) td { background: var(--bg-light); }
+
+        /* ===== ESCALATION LIST ===== */
+        .escalation-list { list-style: none; padding: 0; margin: 6px 0; }
+        .escalation-list li {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            padding: 4px 0 4px 18px;
+            position: relative;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.4;
+        }
+        .escalation-list li:last-child { border-bottom: none; }
+        .escalation-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--blue);
+            font-weight: 700;
+        }
+
+        /* ===== FUNNEL ===== */
+        .funnel-steps {
+            display: flex;
+            align-items: stretch;
+            margin: 10px 0 0 0;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .funnel-step {
+            flex: 1;
+            text-align: center;
+            padding: 10px 4px;
+            background: var(--bg-light);
+            border-right: 2px solid white;
+        }
+        .funnel-step:last-child { border-right: none; }
+        .funnel-step:nth-child(1) { background: #eef2ff; }
+        .funnel-step:nth-child(2) { background: #e8f7fb; }
+        .funnel-step:nth-child(3) { background: #f5f8fb; }
+        .funnel-step:nth-child(4) { background: #e8f7fb; }
+        .funnel-step:nth-child(5) { background: #eef2ff; }
+
+        .funnel-num { font-size: 13pt; font-weight: 800; color: var(--cyan); }
+        .funnel-name { font-size: 8pt; font-weight: 700; color: var(--navy); margin: 2px 0; line-height: 1.3; }
+        .funnel-price { font-size: 7.5pt; color: var(--text-muted); }
+
+        .funnel-details {
+            display: flex;
+            gap: 2px;
+            margin-top: 2px;
+        }
+        .funnel-detail {
+            flex: 1;
+            padding: 8px 6px;
+            border-top: 2px solid var(--cyan);
+        }
+        .funnel-detail-who {
+            font-size: 7.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 3px;
+        }
+        .funnel-detail-text {
+            font-size: 7pt;
+            color: var(--text-secondary);
+            line-height: 1.45;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline { margin: 8px 0; }
+        .tl-item { display: flex; gap: 12px; margin-bottom: 10px; }
+        .tl-left { width: 48px; min-width: 48px; text-align: right; padding-top: 2px; }
+        .tl-time { font-size: 8pt; font-weight: 800; color: var(--cyan); }
+        .tl-label { font-size: 6.5pt; color: var(--text-muted); }
+
+        .tl-mid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 16px;
+            min-width: 16px;
+        }
+        .tl-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--cyan);
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .tl-dot.navy { background: var(--navy); }
+        .tl-line { flex: 1; width: 2px; background: var(--border); min-height: 8px; }
+        .tl-content { flex: 1; padding-bottom: 2px; }
+        .tl-title { font-size: 9pt; font-weight: 700; color: var(--navy); }
+        .tl-text { font-size: 8pt; color: var(--text-secondary); line-height: 1.45; margin-top: 2px; }
+
+        /* ===== PENALTY / SCHEDULE ===== */
+        .penalty-row {
+            display: flex;
+            align-items: center;
+            padding: 7px 12px;
+            margin: 4px 0;
+            border-radius: 5px;
+            gap: 10px;
+        }
+        .penalty-row.p1 { background: #fff8e1; border-left: 3px solid #ffc107; }
+        .penalty-row.p2 { background: #fde8e8; border-left: 3px solid #e53935; }
+        .penalty-situation { flex: 1; font-size: 8.5pt; color: var(--text-secondary); }
+        .penalty-amount { font-size: 10pt; font-weight: 800; color: var(--navy); white-space: nowrap; }
+
+        .schedule-grid {
+            display: flex;
+            gap: 8px;
+            margin: 8px 0;
+        }
+        .schedule-card {
+            flex: 1;
+            background: var(--bg-light);
+            border-radius: 6px;
+            padding: 10px 12px;
+            text-align: center;
+        }
+        .schedule-name { font-size: 10pt; font-weight: 700; color: var(--navy); }
+        .schedule-hours { font-size: 12pt; font-weight: 800; color: var(--cyan); margin: 4px 0; }
+        .schedule-days { font-size: 7.5pt; color: var(--text-muted); }
+
+        /* ===== SALARY ===== */
+        .salary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0;
+            font-size: 9pt;
+        }
+        .salary-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .salary-table td:first-child { color: var(--text-secondary); }
+        .salary-table td:last-child { font-weight: 700; color: var(--navy); text-align: right; }
+        .salary-table tr:nth-child(even) td { background: var(--bg-light); }
+
+        .kpi-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 6px 0;
+            font-size: 8.5pt;
+        }
+        .kpi-table th {
+            background: var(--navy);
+            color: white;
+            padding: 7px 10px;
+            font-size: 7.5pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-align: left;
+        }
+        .kpi-table td {
+            padding: 7px 10px;
+            border-bottom: 1px solid var(--border);
+        }
+        .kpi-table tr:nth-child(even) td { background: var(--bg-light); }
+        .kpi-table .kpi-highlight td { font-weight: 700; color: var(--navy); }
+
+        /* ===== DAY PAGES ===== */
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .day-badge {
+            background: var(--navy);
+            color: var(--cyan);
+            font-size: 7.5pt;
+            font-weight: 800;
+            padding: 5px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        .day-title { font-size: 15pt; font-weight: 800; color: var(--navy); }
+        .day-focus {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            line-height: 1.5;
+            padding: 8px 12px;
+            background: var(--bg-light);
+            border-radius: 4px;
+        }
+
+        /* ===== TASK LIST ===== */
+        .task-list { list-style: none; padding: 0; margin: 6px 0; }
+        .task-list li {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            padding: 5px 0 5px 18px;
+            position: relative;
+            line-height: 1.45;
+            border-bottom: 1px solid var(--border);
+        }
+        .task-list li:last-child { border-bottom: none; }
+        .task-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 9px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        /* ===== TEST BLOCK ===== */
+        .test-block {
+            background: var(--navy);
+            border-radius: 6px;
+            padding: 12px 14px;
+            margin-top: 12px;
+        }
+        .test-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+        .test-badge {
+            background: var(--cyan);
+            color: var(--navy);
+            font-size: 6.5pt;
+            font-weight: 800;
+            padding: 2px 7px;
+            border-radius: 2px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .test-title { font-size: 9pt; font-weight: 700; color: white; }
+        .test-questions { list-style: none; padding: 0; margin: 0; }
+        .test-questions li {
+            font-size: 8.5pt;
+            color: rgba(255,255,255,0.75);
+            padding: 4px 0 4px 22px;
+            position: relative;
+            line-height: 1.45;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .test-questions li:last-child { border-bottom: none; }
+        .test-questions li::before {
+            content: attr(data-n);
+            position: absolute;
+            left: 0;
+            font-size: 8pt;
+            font-weight: 800;
+            color: var(--cyan);
+        }
+
+        /* ===== EVAL TABLE ===== */
+        .eval-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0;
+            font-size: 8pt;
+        }
+        .eval-table th {
+            background: var(--navy);
+            color: white;
+            padding: 7px 8px;
+            text-align: left;
+            font-size: 7pt;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .eval-table th.score-col { text-align: center; width: 55px; }
+        .eval-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; line-height: 1.4; }
+        .eval-table td.score-cell { text-align: center; font-weight: 700; color: var(--navy); }
+        .eval-table tr:nth-child(even) td { background: var(--bg-light); }
+
+        /* ===== RESULT GRID ===== */
+        .result-grid { display: flex; gap: 8px; margin: 10px 0; }
+        .result-box { flex: 1; text-align: center; padding: 10px 8px; border-radius: 6px; }
+        .result-box.pass { background: #e8f5e9; }
+        .result-box.extend { background: #fff8e1; }
+        .result-box.fail { background: #fde8e8; }
+        .result-score { font-size: 14pt; font-weight: 800; }
+        .result-score.pass { color: #2e7d32; }
+        .result-score.extend { color: #e65100; }
+        .result-score.fail { color: #c62828; }
+        .result-label { font-size: 7.5pt; color: var(--text-secondary); margin-top: 4px; line-height: 1.4; }
+
+        /* ===== STEP-LIST ===== */
+        .step-list { list-style: none; padding: 0; margin: 4px 0; }
+        .step-list li {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            padding: 2px 0 2px 14px;
+            position: relative;
+            line-height: 1.45;
+        }
+        .step-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 9px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 7pt;
+            color: var(--text-muted);
+        }
+        .page-footer-line {
+            position: absolute;
+            top: 0;
+            left: 32px;
+            right: 32px;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* ===== WATERMARK ===== */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            opacity: 0.012;
+            background-image: url('../assets/gg-watermark.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<!-- ==================== PAGE 1: ОБЛОЖКА ==================== -->
+<div class="page page-cover">
+    <img src="../assets/logo_white_gg.svg" class="cover-logo" alt="Global Generation">
+    <div class="cover-pre">Global Generation</div>
+    <div class="cover-title">Добро пожаловать<br>в команду</div>
+    <div class="cover-accent-line"></div>
+    <div class="cover-name">Анастасия</div>
+    <div class="cover-role">Менеджер по продажам</div>
+    <div class="cover-date">Май 2026</div>
+    <div class="cover-bottom">Онбординг · 5 дней</div>
+</div>
+
+<!-- ==================== PAGE 2: О КОМПАНИИ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">О компании</div>
+        <div class="page-subtitle">Кто мы и что делаем</div>
+        <div class="accent-line"></div>
+
+        <p style="font-size:9.5pt; color:var(--text-secondary); line-height:1.65; margin-bottom:14px;">
+            <strong style="color:var(--navy);">Global Generation</strong> — команда выпускников Yale, Harvard, Duke, Bennington и других ведущих университетов мира. Мы помогаем студентам поступить в зарубежные вузы: подбираем ментора, выстраиваем стратегию поступления и сопровождаем на каждом этапе — от первой консультации до зачисления.
+        </p>
+
+        <div class="highlight-box">
+            <div class="highlight-box-title">Наша ценность</div>
+            <div class="highlight-box-text">
+                Каждый наш ментор — человек, который сам прошёл этот путь. Яра поступила в Yale, Саша — в Harvard, Рената получила полное финансирование в Duke. Мы не продаём обещания — мы передаём опыт.
+            </div>
+        </div>
+
+        <div class="section-label">Ресурсы — изучите до конца первого дня</div>
+
+        <div class="link-cards">
+            <div class="link-card">
+                <div class="link-card-icon">▶</div>
+                <div class="link-card-body">
+                    <div class="link-card-label">YouTube — Поступление в США</div>
+                    <div class="link-card-desc">Основной канал GG — посмотрите несколько видео, чтобы понять язык и позиционирование</div>
+                    <div class="link-card-url">youtube.com/@GlobalGenerationOfficial/videos</div>
+                </div>
+            </div>
+            <div class="link-card">
+                <div class="link-card-icon">▶</div>
+                <div class="link-card-body">
+                    <div class="link-card-label">YouTube — Поступление в Европу</div>
+                    <div class="link-card-desc">Канал о европейских программах и направлениях</div>
+                    <div class="link-card-url">youtube.com/@GlobalGen-WRLD</div>
+                </div>
+            </div>
+            <div class="link-card" style="border-left-color: var(--cyan);">
+                <div class="link-card-icon" style="font-size:8pt; background:var(--cyan); color:var(--navy);">M</div>
+                <div class="link-card-body">
+                    <div class="link-card-label">Miro — Рабочее пространство команды</div>
+                    <div class="link-card-desc">Этапы работы, скрипты, материалы для онбординга — всё здесь</div>
+                    <div class="link-card-url">miro.com/welcomeonboard/S1N0WDJEbDh6a2NR...</div>
+                </div>
+            </div>
+            <div class="link-card" style="border-left-color: var(--text-muted);">
+                <div class="link-card-icon" style="font-size:8pt;">GG</div>
+                <div class="link-card-body">
+                    <div class="link-card-label">Сайт GG · Портал участников · Портал SAT</div>
+                    <div class="link-card-desc">Изучите продукт изнутри до начала продаж</div>
+                    <div class="link-card-url">global-generations.com &nbsp;·&nbsp; global-generations.com/members &nbsp;·&nbsp; sat.global-generations-edu.com</div>
+                </div>
+            </div>
+            <div class="link-card" style="border-left-color: var(--text-muted);">
+                <div class="link-card-icon" style="font-size:7.5pt;">Ti</div>
+                <div class="link-card-body">
+                    <div class="link-card-label">Tilda — выдача доступов к порталу</div>
+                    <div class="link-card-desc">Используется для выдачи клиентам доступов к учебному порталу</div>
+                    <div class="link-card-url">tilda.cc/ru/</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>2</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 3: СТРУКТУРА КОМАНДЫ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">Структура команды</div>
+        <div class="page-subtitle">С кем Вы будете работать каждый день</div>
+        <div class="accent-line"></div>
+
+        <div class="section-label">Команда продаж и управления</div>
+
+        <div class="team-grid">
+            <div class="team-card founder">
+                <div class="team-card-name">Лев</div>
+                <div class="team-card-role">Основатель</div>
+                <div class="team-card-desc">Руководит стратегией и развитием компании. Вопросы о направлении компании — к нему.</div>
+            </div>
+            <div class="team-card lead">
+                <div class="team-card-name">Александра</div>
+                <div class="team-card-role">Руководитель отдела работы с клиентами</div>
+                <div class="team-card-desc">Ваш прямой руководитель. Сопровождение клиентов, A/B-сегмент, договоры, конфликтные ситуации, обратная связь по работе.</div>
+            </div>
+            <div class="team-card">
+                <div class="team-card-name">Рома</div>
+                <div class="team-card-role">Менеджер по продажам</div>
+                <div class="team-card-desc">Отвечает за продажи портала и сайта — это до-продуктовый этап. Коллега по продажам, с которым Вы частично пересекаетесь.</div>
+            </div>
+            <div class="team-card nastya">
+                <div class="team-card-name">Анастасия — это Вы</div>
+                <div class="team-card-role">Менеджер по продажам (новый)</div>
+                <div class="team-card-desc">Первое касание со всеми входящими лидами. Ведёте C/D-сегмент, эскалируете A/B-кейсы Александре.</div>
+            </div>
+            <div class="team-card" style="flex: 0 0 100%; border-left-color: var(--blue); background:#eef2ff;">
+                <div class="team-card-name">Алиса</div>
+                <div class="team-card-role">Лицо продукта · Ментор (Bennington College)</div>
+                <div class="team-card-desc">Алиса — ментор GG и лицо одного из ключевых продуктов. Специализация: кино, драматургия, сценарий, творческое портфолио. Клиенты с творческими направлениями часто идут к ней.</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:12px;">Менторы GG</div>
+        <p style="font-size:7.5pt; color:var(--text-muted); margin-bottom:6px;">Менторы работают напрямую с клиентами после продажи сопровождения. Важно знать их специализации, чтобы понимать, о чём говорит клиент.</p>
+
+        <table class="mentor-table">
+            <thead>
+                <tr>
+                    <th>Ментор</th>
+                    <th>Университет</th>
+                    <th>Специализация</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="mentor-name-cell">Ярослава (Яра)</td>
+                    <td>Yale University</td>
+                    <td>Нейронаука, биомедицина, Ivy League, Oxbridge, магистратура/PhD</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Александра (Саша)</td>
+                    <td>Harvard University</td>
+                    <td>Спорт + NCAA рекрутинг, биомедицина, бакалавриат США</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Алёна</td>
+                    <td>Bates College</td>
+                    <td>Liberal Arts, структуризация документов, бакалавриат США</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Рената</td>
+                    <td>Duke / Oxford Brookes</td>
+                    <td>Биомедицина, эссе, поиск стипендий, бакалавриат/PhD</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Кристина</td>
+                    <td>Bennington College</td>
+                    <td>Искусство, творческое портфолио, UWC, Liberal Arts</td>
+                </tr>
+                <tr>
+                    <td class="mentor-name-cell">Алиса</td>
+                    <td>Bennington College</td>
+                    <td>Кино, драматургия, сценарий, творческое портфолио</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box" style="margin-top:8px;">
+            <div class="info-box-title">Общий аккаунт</div>
+            <div class="info-box-text">На первом этапе мы работаем в одном аккаунте. Будьте внимательны — Вы видите переписки не только своих лидов. Не отвечайте в чужих диалогах без согласования.</div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>3</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 4: РАЗДЕЛЕНИЕ ОТВЕТСТВЕННОСТИ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">Разделение ответственности</div>
+        <div class="page-subtitle">Только первый месяц — потом зона ответственности расширится</div>
+        <div class="accent-line"></div>
+
+        <table class="split-table">
+            <thead>
+                <tr>
+                    <th class="nastya-col">Анастасия</th>
+                    <th class="alex-col">Александра</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Первое касание со всеми входящими лидами</td>
+                    <td>Подключается к A/B-сегменту после первого касания</td>
+                </tr>
+                <tr>
+                    <td>Ведёт C/D-сегмент: отвечает, квалифицирует, записывает на консультацию</td>
+                    <td>Самостоятельно ведёт оба сегмента (A/B и C/D)</td>
+                </tr>
+                <tr>
+                    <td>Определяет сегмент лида и передаёт контекст</td>
+                    <td>Сопровождение клиентов после консультации</td>
+                </tr>
+                <tr>
+                    <td>Эскалирует сложные ситуации → Александре</td>
+                    <td>Принимает решения по эскалированным кейсам</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box" style="margin-top:12px;">
+            <div class="highlight-box-title">Важно</div>
+            <div class="highlight-box-text">Это правила первого месяца. По мере роста уверенности и качества работы зона самостоятельности будет расширяться. Цель — чтобы Вы чувствовали себя уверенно в каждой ситуации, прежде чем брать больше.</div>
+        </div>
+
+        <div class="section-label" style="margin-top:14px;">Это к Александре — всегда эскалируйте</div>
+        <p style="font-size:8pt; color:var(--text-muted); margin-bottom:6px;">Если видите одну из этих ситуаций — не пытайтесь решить самостоятельно. Сначала напишите Александре.</p>
+
+        <ul class="escalation-list">
+            <li><strong>Договоры и документы</strong> — подписание, изменение условий, вопросы по договору</li>
+            <li><strong>Оплата и возвраты</strong> — любые вопросы о деньгах, задержках, возвратах</li>
+            <li><strong>Конфликтный клиент</strong> — агрессия, угрозы, жалобы, требования сверх договора</li>
+            <li><strong>A/B-сегмент</strong> — высокобюджетные или сложные кейсы (Александра сама оценит)</li>
+            <li><strong>Обещания клиенту</strong> — никаких обещаний о скидках, гарантиях или индивидуальных условиях</li>
+            <li><strong>Нестандартная ситуация</strong> — любое «не знаю как реагировать» → сначала спросите Александру</li>
+        </ul>
+
+        <div class="info-box" style="margin-top:10px;">
+            <div class="info-box-title">Как эскалировать</div>
+            <div class="info-box-text">
+                Напишите Александре: «Вот ситуация [краткое описание]. Вот что клиент написал [скриншот или цитата]. Как лучше ответить?» — не пересказывайте всю переписку, давайте суть.
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>4</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 5: ВОРОНКА ПРОДАЖ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">Воронка продаж</div>
+        <div class="page-subtitle">Как выглядит путь клиента от первого контакта до покупки</div>
+        <div class="accent-line"></div>
+
+        <div class="funnel-steps">
+            <div class="funnel-step">
+                <div class="funnel-num">1</div>
+                <div class="funnel-name">Лид</div>
+                <div class="funnel-price">Входящий</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">2</div>
+                <div class="funnel-name">Первое<br>касание</div>
+                <div class="funnel-price">&lt; 10 мин</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">3</div>
+                <div class="funnel-name">Консультация</div>
+                <div class="funnel-price">6 000 &#8381;</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">4</div>
+                <div class="funnel-name">Продажа</div>
+                <div class="funnel-price">Ваш %</div>
+            </div>
+            <div class="funnel-step">
+                <div class="funnel-num">5</div>
+                <div class="funnel-name">Сопровожде-<br>ние</div>
+                <div class="funnel-price">Долгосрочно</div>
+            </div>
+        </div>
+
+        <div class="funnel-details">
+            <div class="funnel-detail">
+                <div class="funnel-detail-who">Анастасия</div>
+                <div class="funnel-detail-text">Клиент написал в аккаунт. Неважно откуда — Instagram, сайт, реферал. Это Ваша территория.</div>
+            </div>
+            <div class="funnel-detail">
+                <div class="funnel-detail-who">Анастасия</div>
+                <div class="funnel-detail-text">Быстро ответить, познакомиться, определить сегмент, рассказать о GG, предложить консультацию.</div>
+            </div>
+            <div class="funnel-detail">
+                <div class="funnel-detail-who">Ментор</div>
+                <div class="funnel-detail-text">Платная консультация — проводит ментор. Александра определяет, кого назначить. Клиент платит 6 000 ₽. Ваш % — 600 ₽.</div>
+            </div>
+            <div class="funnel-detail">
+                <div class="funnel-detail-who">Александра<br><span style="font-weight:400; font-size:6.5pt;">(1-й месяц)</span></div>
+                <div class="funnel-detail-text">В первый месяц после консультации клиента ведёт Александра. Вы подключаетесь по её запросу.</div>
+            </div>
+            <div class="funnel-detail">
+                <div class="funnel-detail-who">Александра + Ментор</div>
+                <div class="funnel-detail-text">После оплаты клиент переходит к Александре. Ваш бонус: +3% если Ваш клиент купил сопровождение.</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:14px;">Сегменты клиентов</div>
+
+        <div style="display:flex; gap:8px; margin-top:6px;">
+            <div style="flex:1; background:#eef2ff; border-radius:6px; padding:10px 12px; border-left:3px solid var(--blue);">
+                <div style="font-size:9pt; font-weight:700; color:var(--navy);">A/B — Высокий приоритет</div>
+                <div style="font-size:8pt; color:var(--text-secondary); margin-top:4px; line-height:1.45;">Серьёзный запрос, готовы платить, конкретные цели. Первое касание — Вы. Дальше подключается Александра.</div>
+            </div>
+            <div style="flex:1; background:var(--bg-light); border-radius:6px; padding:10px 12px; border-left:3px solid var(--cyan);">
+                <div style="font-size:9pt; font-weight:700; color:var(--navy);">C/D — Ваш сегмент</div>
+                <div style="font-size:8pt; color:var(--text-secondary); margin-top:4px; line-height:1.45;">Интерес есть, но нужна квалификация. Бюджет пока не определён, много вопросов. Ведёте самостоятельно.</div>
+            </div>
+        </div>
+
+        <div class="info-box" style="margin-top:12px;">
+            <div class="info-box-title">Как определить сегмент</div>
+            <div class="info-box-text">
+                Задайте себе: «Этот человек готов платить прямо сейчас или просто интересуется?» A/B — уже думают о покупке. C/D — пока изучают. Если сомневаетесь — спросите Александру.
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>5</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 6: РАБОЧИЙ ДЕНЬ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">Рабочий день</div>
+        <div class="page-subtitle">Как выглядит типичный день менеджера по продажам GG</div>
+        <div class="accent-line"></div>
+
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-time">10:00</div>
+                    <div class="tl-label">Начало</div>
+                </div>
+                <div class="tl-mid">
+                    <div class="tl-dot navy"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-title">Начало смены — первая проверка</div>
+                    <div class="tl-text">Открыть аккаунт, просмотреть все входящие за ночь и утро. Ответить на всё, что пришло, пока Вас не было. Приоритет — горячие лиды.</div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-time">10:00+</div>
+                    <div class="tl-label">Весь день</div>
+                </div>
+                <div class="tl-mid">
+                    <div class="tl-dot"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-title">Мониторинг входящих — непрерывно</div>
+                    <div class="tl-text">Целевое время ответа — 10 минут. Отвечайте сразу как видите. Не накапливайте непрочитанные. Главное — не уходите из эфира незаметно.</div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-time">В тишь</div>
+                    <div class="tl-label">при затишье</div>
+                </div>
+                <div class="tl-mid">
+                    <div class="tl-dot"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-title">Исходящая работа и задачи</div>
+                    <div class="tl-text">Когда нет новых входящих — выполняйте текущие задачи, пишите исходящие, готовьтесь к разговорам. Оставайтесь в мониторинге — входящие приоритетнее.</div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-time">В течение</div>
+                    <div class="tl-label">дня</div>
+                </div>
+                <div class="tl-mid">
+                    <div class="tl-dot"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-title">Квалификация и работа с лидами</div>
+                    <div class="tl-text">Определяйте сегмент, задавайте уточняющие вопросы, предлагайте консультацию. Сложные кейсы — сразу пишите Александре.</div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-time">17:30</div>
+                    <div class="tl-label">Перед концом</div>
+                </div>
+                <div class="tl-mid">
+                    <div class="tl-dot"></div>
+                    <div class="tl-line"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-title">Итоги дня</div>
+                    <div class="tl-text">Есть ли открытые диалоги, которые требуют продолжения? Есть ли кейсы, по которым нужно обновить Александру? Что нужно передать на завтра?</div>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-left">
+                    <div class="tl-time">18:00</div>
+                    <div class="tl-label">Конец</div>
+                </div>
+                <div class="tl-mid">
+                    <div class="tl-dot navy"></div>
+                </div>
+                <div class="tl-content">
+                    <div class="tl-title">Конец смены</div>
+                    <div class="tl-text">С 18:00 лиды покрывает Александра (до 21:00). В Ваш выходной (среда, воскресенье) — Александра покрывает весь сегмент.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>6</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 7: УСЛОВИЯ И ШТРАФЫ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">Условия работы</div>
+        <div class="page-subtitle">График, скорость ответа и штрафная система</div>
+        <div class="accent-line"></div>
+
+        <div class="section-label">График работы</div>
+
+        <div class="schedule-grid">
+            <div class="schedule-card">
+                <div class="schedule-name">Анастасия</div>
+                <div class="schedule-hours">10:00 – 18:00</div>
+                <div class="schedule-days">5/2 · выходные: среда и воскресенье</div>
+            </div>
+            <div class="schedule-card" style="border-left: 3px solid var(--navy);">
+                <div class="schedule-name">Александра</div>
+                <div class="schedule-hours">10:00 – 21:00</div>
+                <div class="schedule-days">6/1 · выходной: понедельник</div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-box-title">Покрытие выходных</div>
+            <div class="info-box-text">В Ваши выходные (среда и воскресенье) сегмент покрывает Александра. В выходной Александры (понедельник) Вы работаете в штатном режиме.</div>
+        </div>
+
+        <div class="section-label" style="margin-top:14px;">Скорость ответа</div>
+
+        <div style="display:flex; gap:12px; margin:8px 0;">
+            <div style="flex:1; background:#e8f5e9; border-radius:6px; padding:10px 14px; text-align:center;">
+                <div style="font-size:14pt; font-weight:800; color:#2e7d32;">10 мин</div>
+                <div style="font-size:8pt; color:var(--text-secondary); margin-top:4px;">Целевое время ответа</div>
+            </div>
+            <div style="flex:1; background:#fff8e1; border-radius:6px; padding:10px 14px; text-align:center;">
+                <div style="font-size:14pt; font-weight:800; color:#e65100;">45 мин</div>
+                <div style="font-size:8pt; color:var(--text-secondary); margin-top:4px;">Максимально допустимо</div>
+            </div>
+            <div style="flex:1; background:#fde8e8; border-radius:6px; padding:10px 14px; text-align:center;">
+                <div style="font-size:14pt; font-weight:800; color:#c62828;">45+ мин</div>
+                <div style="font-size:8pt; color:var(--text-secondary); margin-top:4px;">Просрочка — штраф</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="margin-top:14px;">Штрафная система</div>
+
+        <div class="penalty-row p1">
+            <div class="penalty-situation">Ответ на лид позже 45 минут (1-я и 2-я просрочка за день)</div>
+            <div class="penalty-amount">500 &#8381;</div>
+        </div>
+        <div class="penalty-row p2">
+            <div class="penalty-situation">Начиная с 3-й просрочки за день — штраф становится фиксированным</div>
+            <div class="penalty-amount">2 000 &#8381;</div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:12px;">
+            <div class="highlight-box-title">Практическое правило</div>
+            <div class="highlight-box-text">
+                Желательно не писать промежуточный ответ без необходимости. Но если ответ зависит от кого-то другого — напишите клиенту: «Уточняю информацию, вернусь через X минут». Это лучше, чем молчать.
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>7</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 8: ЗАРПЛАТА ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="page-title">Зарплата и мотивация</div>
+        <div class="page-subtitle">Условия обсуждаются — финальная версия будет зафиксирована в договоре</div>
+        <div class="accent-line"></div>
+
+        <div class="section-label">Структура дохода</div>
+
+        <table class="salary-table">
+            <tbody>
+                <tr>
+                    <td>Фиксированная часть</td>
+                    <td>15 000 &#8381; / мес</td>
+                </tr>
+                <tr>
+                    <td>% от консультации (6 000 &#8381;)</td>
+                    <td>600 &#8381; / продажа</td>
+                </tr>
+                <tr>
+                    <td>% от портала (~29 919 &#8381;)</td>
+                    <td>~3 000 &#8381; / продажа</td>
+                </tr>
+                <tr>
+                    <td>Бонус: Ваш клиент купил сопровождение</td>
+                    <td>3% от суммы сопровождения</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-label" style="margin-top:14px;">KPI-бонусы</div>
+
+        <table class="kpi-table">
+            <thead>
+                <tr>
+                    <th>Продаж в месяц</th>
+                    <th>KPI-бонус</th>
+                    <th>Ожидаемая зарплата</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>&lt; 20 продаж</td>
+                    <td>—</td>
+                    <td>Фикс + %</td>
+                </tr>
+                <tr class="kpi-highlight">
+                    <td>20 продаж</td>
+                    <td>+3 000 &#8381;</td>
+                    <td>~30 000 &#8381;</td>
+                </tr>
+                <tr class="kpi-highlight">
+                    <td>25 продаж</td>
+                    <td>+8 000 &#8381;</td>
+                    <td>~38 000 &#8381;</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="info-box" style="margin-top:12px;">
+            <div class="info-box-title">Дата выплаты</div>
+            <div class="info-box-text">Зарплата выплачивается в районе 31-го — 3-го числа: в последние выходные месяца (если это 30–31) или в первые выходные нового месяца.</div>
+        </div>
+
+        <div class="highlight-box" style="margin-top:10px;">
+            <div class="highlight-box-title">Как выйти на 30 000 ₽+</div>
+            <div class="highlight-box-text">
+                20 продаж консультаций в месяц = 20 × 600 &#8381; = 12 000 &#8381; + фикс 15 000 &#8381; + KPI 3 000 &#8381; = 30 000 &#8381;. Это 1 консультация в день — вполне реально при хорошем потоке лидов. За каждую продажу портала сверху ещё ~3 000 &#8381;.
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>8</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 9: ДЕНЬ 1 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="day-header">
+            <div class="day-badge">День 1</div>
+            <div class="day-title">Погружение</div>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="day-focus">
+            Сегодня Вы узнаёте: кто мы, что продаём, как выглядит клиент. Никаких реальных лидов — только изучение. Главная задача — к концу дня понять продукт на уровне «могу объяснить своими словами».
+        </div>
+
+        <div class="section-label">Задачи дня</div>
+        <ul class="task-list">
+            <li>Познакомиться с командой — Александра, Рома, Лев, менторы. Спросите каждого о своей роли, если есть возможность.</li>
+            <li>Изучить шпаргалку по продуктам и ценам (Александра передаст)</li>
+            <li>Прочитать архив переписок — минимум 20 диалогов. Обращайте внимание: как начинается разговор, какие вопросы задаёт клиент, как менеджер отвечает на возражения.</li>
+            <li>Посмотреть YouTube-каналы GG (США и Европа) — ссылки на странице 2</li>
+            <li>Ознакомиться с рабочим пространством в Miro — ссылка на странице 2</li>
+            <li>Получить доступ к CRM от Александры — самостоятельно изучить интерфейс</li>
+        </ul>
+
+        <div class="section-label" style="margin-top:12px;">Ресурсы</div>
+        <ul class="step-list">
+            <li>Шпаргалка по продуктам и ценам (от Александры)</li>
+            <li>Архив переписок (от Александры)</li>
+            <li>Страница 2 — YouTube, Miro, сайты GG</li>
+        </ul>
+
+        <div class="test-block">
+            <div class="test-header">
+                <div class="test-badge">Задание на вечер</div>
+                <div class="test-title">Ответьте на вопросы — отправьте Александре в конце дня</div>
+            </div>
+            <ul class="test-questions">
+                <li data-n="1">Назовите три продукта GG с ценами. Своими словами, без подглядывания.</li>
+                <li data-n="2">Чем сопровождение отличается от портала? Для кого каждый из них?</li>
+                <li data-n="3">Кто такие A/B и C/D-сегменты? В чём разница?</li>
+                <li data-n="4">Какую роль в компании играет Алиса? А Рома?</li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>9</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 10: ДЕНЬ 2 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="day-header">
+            <div class="day-badge">День 2</div>
+            <div class="day-title">Скрипты и шаблоны</div>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="day-focus">
+            Сегодня Вы учитесь отвечать. Изучаете шаблоны, разбираете возражения, тренируетесь на смоделированных ситуациях. Реальных лидов пока нет — только практика в безопасном режиме.
+        </div>
+
+        <div class="section-label">Задачи дня</div>
+        <ul class="task-list">
+            <li>Изучить шаблоны ответов: первое касание, FAQ, возражения (Александра передаст)</li>
+            <li>Разобрать три ключевых возражения: «дорого», «подумаю», «что входит» — знать ответ уверенно</li>
+            <li>Понять разницу сегментов A/B и C/D: как определяется сегмент, что делать с каждым</li>
+            <li>Выучить список ситуаций «это к Александре» (страница 4 этого документа)</li>
+            <li>Попробовать делать анализы лидов через ChatGPT — Александра покажет как</li>
+        </ul>
+
+        <div class="section-label" style="margin-top:10px;">Ресурсы</div>
+        <ul class="step-list">
+            <li>Шаблоны ответов (от Александры)</li>
+            <li>Страница 4 — список эскалаций</li>
+            <li>Страница 5 — воронка продаж и сегменты</li>
+        </ul>
+
+        <div class="test-block">
+            <div class="test-header">
+                <div class="test-badge">Задание на вечер</div>
+                <div class="test-title">Напишите ответы на 5 сценариев — пришлите Александре</div>
+            </div>
+            <ul class="test-questions">
+                <li data-n="1">Клиент пишет: «Привет, хочу узнать про поступление за рубеж». Ваш первый ответ?</li>
+                <li data-n="2">Клиент говорит: «Это слишком дорого». Что пишете?</li>
+                <li data-n="3">Клиент говорит: «Я подумаю». Как реагируете?</li>
+                <li data-n="4">Клиент: «Мой ребёнок хочет поступить в США на медицину, бюджет $15 000». Что делаете?</li>
+                <li data-n="5">Клиент агрессивно требует возврат денег. Ваши действия?</li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>10</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 11: ДЕНЬ 3 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="day-header">
+            <div class="day-badge">День 3</div>
+            <div class="day-title">Практика под контролем</div>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="day-focus">
+            Сегодня Вы работаете с реальными лидами — но каждый ответ согласовываете с Александрой до отправки. Это не недоверие — это защита Вас и клиента. Напишите текст → отправьте Александре → получите одобрение → отправьте клиенту.
+        </div>
+
+        <div class="section-label">Задачи дня</div>
+        <ul class="task-list">
+            <li>Отвечать на входящие лиды — каждый текст сначала отправлять Александре для проверки</li>
+            <li>Писать Александре: «Вот что хочу ответить [текст]» — она правит или одобряет</li>
+            <li>Если ситуация нестандартная — сразу описывать Александре, не пытаться решить самостоятельно</li>
+            <li>Фиксировать: что было легко, что было сложно, что непонятно — для разбора в конце дня</li>
+        </ul>
+
+        <div class="info-box" style="margin-top:10px;">
+            <div class="info-box-title">Как работает согласование</div>
+            <div class="info-box-text">
+                Напишите Александре: «Лид спрашивает [вопрос]. Хочу ответить: [Ваш текст]». Александра ответит: «Отправляйте» или «Поменяйте вот это». Это занимает 1-2 минуты, зато Вы учитесь быстро.
+            </div>
+        </div>
+
+        <div class="test-block">
+            <div class="test-header">
+                <div class="test-badge">Разбор в конце дня</div>
+                <div class="test-title">Обсуждение с Александрой — вместе смотрите на день</div>
+            </div>
+            <ul class="test-questions">
+                <li data-n="1">Выберите 1 переписку из сегодняшнего дня — что можно было сделать лучше?</li>
+                <li data-n="2">Сколько лидов обработали? Сколько согласились на консультацию?</li>
+                <li data-n="3">Были ли ситуации, когда не знали как ответить? Как в итоге решили?</li>
+            </ul>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>11</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 12: ДЕНЬ 4 ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="day-header">
+            <div class="day-badge">День 4</div>
+            <div class="day-title">Самостоятельная работа</div>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="day-focus">
+            Сегодня Вы работаете самостоятельно — без согласования до отправки. Александра проверяет переписки 2-3 раза в течение дня и даёт обратную связь постфактум. Ваша задача: соблюдать всё, что изучили за первые три дня.
+        </div>
+
+        <div class="section-label">Задачи дня</div>
+        <ul class="task-list">
+            <li>Отвечать на лиды самостоятельно, не согласовывая каждый ответ</li>
+            <li>Соблюдать все правила: скорость, тон, эскалации по списку</li>
+            <li>Фиксировать моменты неуверенности — для разбора в конце дня</li>
+            <li>Ноль самостоятельных решений по ситуациям из списка эскалаций</li>
+        </ul>
+
+        <div class="info-box" style="margin-top:10px;">
+            <div class="info-box-title">Роль Александры сегодня</div>
+            <div class="info-box-text">
+                Александра заходит в аккаунт 2-3 раза в день и проверяет переписки. Если видит ошибку — напишет Вам после, не во время диалога с клиентом. Это тренировка самостоятельности.
+            </div>
+        </div>
+
+        <div class="test-block">
+            <div class="test-header">
+                <div class="test-badge">Разбор в конце дня</div>
+                <div class="test-title">Самооценка + обратная связь от Александры</div>
+            </div>
+            <ul class="test-questions">
+                <li data-n="1">Что сегодня давалось легко? Что было сложно?</li>
+                <li data-n="2">Были ли ситуации, в которых не были уверены? Как поступили?</li>
+                <li data-n="3">Александра разбирает 2-3 выбранные переписки и даёт конкретную обратную связь</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box" style="margin-top:12px;">
+            <div class="highlight-box-title">Цель дня 4</div>
+            <div class="highlight-box-text">
+                К концу дня Вы должны чувствовать, что можете работать без постоянного согласования. Если это ощущение есть — отлично. Если нет — обсудите с Александрой, что именно вызывает неуверенность.
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>12</span>
+    </div>
+</div>
+
+<!-- ==================== PAGE 13: ДЕНЬ 5 + КРИТЕРИИ ==================== -->
+<div class="page">
+    <div class="header-bar">
+        <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    </div>
+    <div class="content">
+        <div class="day-header">
+            <div class="day-badge">День 5</div>
+            <div class="day-title">Полная самостоятельность + оценка</div>
+        </div>
+        <div class="accent-line"></div>
+
+        <div class="day-focus">
+            Работаете полностью самостоятельно весь день. Александра не вмешивается. Вечером — итоговая оценка по пяти критериям и решение по испытательному сроку.
+        </div>
+
+        <div class="section-label">Задачи дня</div>
+        <ul class="task-list">
+            <li>Работать самостоятельно: отвечать, квалифицировать, записывать на консультацию</li>
+            <li>Эскалировать только по стандартным правилам (страница 4)</li>
+            <li>Вечером — встреча с Александрой: итоги, оценка, решение</li>
+        </ul>
+
+        <div class="section-label" style="margin-top:12px;">Критерии оценки дня 5</div>
+
+        <table class="eval-table">
+            <thead>
+                <tr>
+                    <th>Критерий</th>
+                    <th class="score-col">5 баллов</th>
+                    <th class="score-col">3 балла</th>
+                    <th class="score-col">1 балл</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Скорость ответа</td>
+                    <td class="score-cell">0 просрочек</td>
+                    <td class="score-cell">1 просрочка</td>
+                    <td class="score-cell">2+</td>
+                </tr>
+                <tr>
+                    <td>Грамотность и тон</td>
+                    <td class="score-cell">Без ошибок</td>
+                    <td class="score-cell">1–2 ошибки</td>
+                    <td class="score-cell">Много</td>
+                </tr>
+                <tr>
+                    <td>Следование скриптам</td>
+                    <td class="score-cell">Правильно</td>
+                    <td class="score-cell">Частично</td>
+                    <td class="score-cell">Игнорирует</td>
+                </tr>
+                <tr>
+                    <td>Эскалации</td>
+                    <td class="score-cell">Все верно</td>
+                    <td class="score-cell">1 пропущена</td>
+                    <td class="score-cell">Несколько</td>
+                </tr>
+                <tr>
+                    <td>Инициатива и вопросы</td>
+                    <td class="score-cell">Активна</td>
+                    <td class="score-cell">Иногда</td>
+                    <td class="score-cell">Пассивна</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="section-label" style="margin-top:10px;">Итоговое решение</div>
+
+        <div class="result-grid">
+            <div class="result-box pass">
+                <div class="result-score pass">23–25</div>
+                <div class="result-label">Испытательный<br>пройден</div>
+            </div>
+            <div class="result-box extend">
+                <div class="result-score extend">17–22</div>
+                <div class="result-label">Продлеваем<br>испытательный</div>
+            </div>
+            <div class="result-box fail">
+                <div class="result-score fail">&lt; 17</div>
+                <div class="result-label">Разговор о<br>дальнейшем</div>
+            </div>
+        </div>
+    </div>
+    <div class="page-footer">
+        <div class="page-footer-line"></div>
+        <span>Global Generation — Онбординг Анастасии</span>
+        <span>13</span>
+    </div>
+</div>
+
+</body>
+</html>
