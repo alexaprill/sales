@@ -280,6 +280,39 @@
             text-transform: uppercase;
         }
 
+        /* ===== STEP LIST ===== */
+        .step-list {
+            list-style: none;
+            padding: 0;
+            margin: 4px 0 2px 0;
+        }
+
+        .step-list li {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            padding: 2px 0 2px 14px;
+            position: relative;
+            line-height: 1.45;
+        }
+
+        .step-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 7px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--cyan);
+        }
+
+        .step-hint {
+            font-size: 8pt;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 4px;
+        }
+
         /* ===== CHECKLIST ===== */
         .checklist {
             list-style: none;
@@ -402,8 +435,18 @@
             <div class="step-body">
                 <div class="step-title">Вставьте данные клиента</div>
                 <div class="step-text">
-                    Скопируйте заметки с консультации и вставьте в чат Claude. Укажите имя клиента, направление, бюджет, сильные стороны и цели. Claude сам сформирует JSON и сгенерирует PDF.
+                    Напишите Claude "Сгенерируй персональный план для клиента" и вставьте заметки с консультации. Что нужно указать:
                 </div>
+                <ul class="step-list">
+                    <li><strong>Имя клиента</strong> (имя и фамилия)</li>
+                    <li><strong>Направление</strong> (биология, спорт, искусство и т.д.)</li>
+                    <li><strong>Уровень</strong> (бакалавриат, магистратура, PhD)</li>
+                    <li><strong>Страны</strong> (США, Англия, Европа)</li>
+                    <li><strong>Бюджет</strong> (в $ за год)</li>
+                    <li><strong>Академические данные</strong> (GPA, вуз, достижения)</li>
+                    <li><strong>Заметки с консультации</strong> (сильные стороны, цели, особенности)</li>
+                </ul>
+                <div class="step-hint">Claude сам подберёт ментора, сформирует план и сгенерирует PDF.</div>
             </div>
         </div>
 
@@ -422,10 +465,17 @@
         <div class="step">
             <div class="step-number">4</div>
             <div class="step-body">
-                <div class="step-title">Найдите PDF и отправьте клиенту</div>
+                <div class="step-title">Проверьте PDF и отправьте клиенту</div>
                 <div class="step-text">
-                    Готовый файл появится в папке <strong>output/</strong>. Имя файла: <strong>workplan_Имя_дата.pdf</strong>. Откройте, проверьте и отправьте клиенту.
+                    Готовый файл появится в папке <strong>output/</strong>. Откройте и проверьте перед отправкой:
                 </div>
+                <ul class="step-list">
+                    <li>Имя клиента написано правильно</li>
+                    <li>Ментор подходит по направлению</li>
+                    <li>Сильные стороны и зоны роста совпадают с заметками</li>
+                    <li>Дедлайн спецпредложения актуален</li>
+                </ul>
+                <div class="step-hint">Если нужно исправить - напишите Claude что поменять, он перегенерирует PDF.</div>
                 <div class="code-block"><span class="comment"># PDF будет здесь:</span>
 <span class="command">~/GlobalGeneration-App/output/workplan_Имя_20260315.pdf</span></div>
             </div>
@@ -538,12 +588,12 @@
                 </tr>
                 <tr>
                     <td>Частичное менторство</td>
-                    <td>55 000 &#8381;/мес</td>
+                    <td>59 500 &#8381;/мес</td>
                     <td>Персональный ментор на связи в чате, стратегический созвон</td>
                 </tr>
                 <tr class="recommended">
                     <td>Полное менторство <span class="badge">Основной</span></td>
-                    <td>80 000 &#8381;/мес</td>
+                    <td>86 500 &#8381;/мес</td>
                     <td>4 встречи/мес с ментором, домашние задания, гарантия поступления (от 8 мес.)</td>
                 </tr>
                 <tr>
