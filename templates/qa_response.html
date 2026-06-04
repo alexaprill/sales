@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ client_name }} - Global Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 28pt 0 28pt 0;
+
+            @bottom-left {
+                content: "Global Generation";
+                font-family: 'Mulish', sans-serif;
+                font-size: 7pt;
+                font-weight: 500;
+                color: #8899af;
+                padding-left: 28px;
+                padding-bottom: 6px;
+            }
+
+            @bottom-right {
+                content: "Конфиденциально";
+                font-family: 'Mulish', sans-serif;
+                font-size: 7pt;
+                font-weight: 500;
+                color: #8899af;
+                padding-right: 28px;
+                padding-bottom: 6px;
+            }
+        }
+
+        @page :first {
+            margin-top: 0;
+        }
+
+        :root {
+            --cyan: #00C1DE;
+            --blue: #407BFF;
+            --navy: #12284C;
+            --text: #12284C;
+            --text-secondary: #4a5f7a;
+            --text-muted: #8899af;
+            --border: #e4eaf0;
+            --bg-light: #f5f8fb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Mulish', sans-serif;
+            font-size: 9pt;
+            font-weight: 400;
+            line-height: 1.5;
+            color: var(--text);
+            background: white;
+        }
+
+        /* HEADER */
+        .header-bar {
+            background: var(--navy);
+            padding: 12px 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-logo { height: 22px; width: auto; }
+
+        .header-meta {
+            color: rgba(255,255,255,0.55);
+            font-size: 7.5pt;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* CONTENT */
+        .content { padding: 22px 28px 40px 28px; }
+
+        /* GREETING */
+        .greeting { margin-bottom: 18px; }
+
+        .greeting-name {
+            font-size: 15pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .accent-line {
+            width: 36px;
+            height: 3px;
+            background: var(--cyan);
+            border-radius: 2px;
+            margin-bottom: 8px;
+        }
+
+        .greeting-text {
+            font-size: 9pt;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 90%;
+        }
+
+        /* Q&A SECTIONS */
+        .sections-grid {
+            display: block;
+        }
+
+        .qa-section {
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 3px solid var(--cyan);
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+
+        .qa-question {
+            font-size: 9.5pt;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .qa-intro {
+            color: var(--text-secondary);
+            font-size: 8.5pt;
+            line-height: 1.55;
+            margin-bottom: 7px;
+        }
+
+        .qa-subblock { margin-bottom: 7px; }
+        .qa-subblock:last-child { margin-bottom: 0; }
+
+        .subblock-title {
+            font-size: 8.5pt;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+
+        .qa-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .qa-list li {
+            font-size: 8.5pt;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .qa-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 5px;
+            height: 5px;
+            background: var(--cyan);
+            border-radius: 50%;
+        }
+
+        .qa-list li strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .qa-note {
+            font-size: 8pt;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-top: 7px;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header-bar">
+    <img src="../assets/logo_white_gg.svg" class="header-logo" alt="Global Generation">
+    <span class="header-meta">{{ date }}</span>
+</div>
+
+<div class="content">
+    <div class="greeting">
+        <div class="greeting-name">{{ client_name }}</div>
+        <div class="accent-line"></div>
+        {% if greeting_text %}<div class="greeting-text">{{ greeting_text }}</div>{% endif %}
+    </div>
+
+    <div class="sections-grid">
+        {% for section in sections %}
+        <div class="qa-section">
+            <div class="qa-question">{{ section.question }}</div>
+
+            {% if section.intro %}
+            <p class="qa-intro">{{ section.intro }}</p>
+            {% endif %}
+
+            {% for subblock in section.subblocks %}
+            <div class="qa-subblock">
+                {% if subblock.title %}
+                <div class="subblock-title">{{ subblock.title }}</div>
+                {% endif %}
+                <ul class="qa-list">
+                    {% for item in subblock.points %}
+                    <li>{{ item | safe }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endfor %}
+
+            {% if section.note %}
+            <p class="qa-note">{{ section.note }}</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+</body>
+</html>
